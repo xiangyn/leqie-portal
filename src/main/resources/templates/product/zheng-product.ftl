@@ -146,11 +146,18 @@
 						<div class="row">
 							<div class="left">
 								<div class="order-price">
-									<span class="order-price-formula"></span>
-									<span class="order-price-value"></span>
+									<p class="formula">计算公式：<span class="order-price-formula">加载中...</span></p>
+									<span class="order-price-value">¥ 0.00</span>
 								</div>
 							</div>
-							<div class="left">
+							<div class="right clearfix">
+								<div class="order-number">
+									<span class="order-number-title">购买数量：</span>
+									<input type="text" value="1" />
+								</div>
+								<div class="order-button">
+									<button class="button">购 买</button>
+								</div>
 							</div>
 						</div>
 					</div>
