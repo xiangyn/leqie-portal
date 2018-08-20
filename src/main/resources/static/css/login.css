@@ -1,0 +1,28 @@
+html, body { background: #F9F9F9; }
+
+.navbar .right .color-hover { display: inline-block; font-size: 15px; margin: 30px 20px 0; text-decoration: none; }
+
+.login-body { width: 100%; border-top: 1px solid #dedeed; }
+.login-container { padding: 70px 0 50px; }
+.login-body .login-image { marign-right: 40px; width: 680px; height: 320px; border: 1px solid #dedeed; }
+.login-body .login-content { width: 360px; height: 320px; border: 1px solid #dedeed; border-radius: 4px; padding: 0 32px; }
+.login-content .login-title { font-size: 18px; margin: 22px 0; }
+.login-content .login-form { font-size: 15px; margin: 20px 0; }
+.login-content .login-form .form-item { width: 100%; margin: 20px 0; font-size: 14px; }
+
+.register-body .register-content { 
+	width: 700px; background: #fff; border-top: 2px solid #0080ff; box-shadow: 4px 4px 10px #0080ff;
+	margin: 40px; padding: 50px;
+}
+.register-body .register-title { margin-bottom: 30px; font-size: 16px; }
+.register-form > .row { margin: 20px 0; }
+.register-form button[type='submit'] { padding: 12px 25px; margin: 30px auto; }
+.register-form .form-item-msg { display: inline-block; margin: 10px; }
+.register-right { margin:40px 0; width: 240px; }
+.register-right .btn { display: inline-block; text-decoration: none; border-radius: 6px; padding: 20px 0 25px; width: 100%; }
+.register-right .btn { text-align: center; font-size:15px; background: #fff; }
+.register-right .btn .fa { font-size: 30px; position: relative; top: 4px; }
+
+.footer { background-color: #fff; }
+.footer a, .footer span, .footer p { color: #282D3B; }
+.footer hr { border-color: #282D3B; }
