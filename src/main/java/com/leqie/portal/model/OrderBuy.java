@@ -18,6 +18,10 @@ public class OrderBuy {
 	
 	private String erjimulu;
 	
+	private String xinghaoName;
+	
+	private int amount;
+	
 	private String money;
 
 	public String getZhonglei() {
@@ -90,6 +94,22 @@ public class OrderBuy {
 
 	public void setMoney(String money) {
 		this.money = money;
+	}
+
+	public String getXinghaoName() {
+		return xinghaoName;
+	}
+
+	public void setXinghaoName(String xinghaoName) {
+		this.xinghaoName = xinghaoName;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
 
 }

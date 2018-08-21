@@ -73,29 +73,29 @@
 					<#else/>
 						<ul class="product-list">
 							<li class="product-list-title clearfix">
-								<span class="colomn xinghao">型号</span>
-								<span class="colomn gongyi">工艺标准</span>
-								<span class="colomn kucun">库存</span>
-								<span class="colomn shijian">时间</span>
-								<span class="colomn caozuo">操作</span>
+								<span class="column xinghao">型号</span>
+								<span class="column gongyi">工艺标准</span>
+								<span class="column kucun">库存</span>
+								<span class="column shijian">时间</span>
+								<span class="column caozuo">操作</span>
 							</li>
 							<#list data as each>
 							<li class="product-item clearfix">
-								<div class="colomn xinghao">
+								<div class="column xinghao">
 									<p class="import">${each.zhonglei} ${each.canzhaozhishu}</p>
 									<p>规格：${each.guige}</p>
 									<p>类别：${each.leibie}</p>
 								</div>
-								<span class="colomn gongyi">
+								<span class="column gongyi">
 									<p class="import m-t">${each.gongyibiaozhun}</p>
 								</span>
-								<span class="colomn kucun">
+								<span class="column kucun">
 									<p class="import m-t">${each.kucun}</p>
 								</span>
-								<span class="colomn shijian">
+								<span class="column shijian">
 									<p class="m-t">${each.createDate?number_to_datetime?string("yyyy-MM-dd")}</p>
 								</span>
-								<span class="colomn caozuo">
+								<span class="column caozuo">
 									<p class="m-t">
 										<!-- <span class="btn shopcar" data-id="${each.id}">加入购物车</span> -->
 										<a class="btn order color" href="${ctx}/app/product-zheng-${each.id?string('0')}.jhtml">查看详情</a>

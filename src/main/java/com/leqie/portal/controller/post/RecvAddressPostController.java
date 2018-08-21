@@ -21,7 +21,7 @@ public class RecvAddressPostController {
 	@Autowired
 	private AddressService service;
 
-	@RequestMapping("/app/loadAddresses")
+	@RequestMapping("/app/loadAddresses.jo")
 	public ListResult<Address> loadAddresses(HttpServletRequest request) {
 		List<Address> data = service.getAddress(WebUtil.getUserId(request));
 		return new ListResult<Address>(data);

@@ -106,6 +106,12 @@ button:focus, input:focus, textarea:focus { border-color: #0080ff!important; }
   font-size: 0;
   height: 0;
 }
+.unselect {
+	-webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
 
 .row {
 	width: 100%;
