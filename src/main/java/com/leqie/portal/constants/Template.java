@@ -15,6 +15,8 @@ public class Template {
 	
 	public static final String ORDER_INDEX = "order/index";
 	
+	public static final String ORDER_BUY = "order/buy";
+	
 	public static final String ORDER_UNPAY= "order/unpay";
 	
 	public static final String ORDER_UNSEND = "order/unsend";

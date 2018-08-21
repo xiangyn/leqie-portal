@@ -6,15 +6,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.util.URLEncoder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.leqie.portal.constants.RequestAttributes;
 import com.leqie.portal.constants.Session;
+import com.leqie.portal.controller.ShopCarInfo;
 import com.leqie.portal.model.User;
+import com.leqie.portal.service.ShopCarService;
+import com.leqie.portal.utils.WebUtil;
 
 public class UserInterceptor implements HandlerInterceptor {
-	
-	public static final String CURRENT_URI_ATTR_NAME = "_uri";
 	
 	private String redirectUrl;
 	
@@ -35,11 +38,14 @@ public class UserInterceptor implements HandlerInterceptor {
 	public void setCharset(Charset charset) {
 		this.charset = charset;
 	}
+	
+	@Autowired
+	private ShopCarService shopcarService;
 
 	@Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        User user = (User) request.getSession().getAttribute(Session.USER);
+        User user = WebUtil.getUser(request);
         if (user == null) {
         	String rediect = getRedirectUrl(request);
             response.sendRedirect(rediect);
@@ -61,13 +67,22 @@ public class UserInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		request.setAttribute(CURRENT_URI_ATTR_NAME, request.getRequestURI());
+		request.setAttribute(RequestAttributes.CURRENT_URI_ATTR_NAME, request.getRequestURI());
+		Integer shopCarCount = (Integer)request.getSession().getAttribute(Session.SHOPCAR_COUNT);
+		if(shopCarCount == null) {
+			User user = (User) request.getSession().getAttribute(Session.USER);
+			ShopCarInfo info = shopcarService.getShopCarInfo(user.getNo());
+			if(info != null) {
+				shopCarCount = Integer.parseInt(info.getCount());
+				request.getSession().setAttribute(Session.SHOPCAR_COUNT, shopCarCount);
+			}
+		}
 	}
 
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
 			throws Exception {
-		request.getRequestURI();
+		
 	}
 	
 }

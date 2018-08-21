@@ -8,8 +8,8 @@
 </head>
 <body>
 	<#include "/common/top.ftl" />
-	<#assign navbarSelectedMenu='center' />
 	<#assign logoInfo='整板' />
+	<#assign navbarSelectedMenu='' />
 	<#include "/common/navbar.ftl" />
 	<div class="product">
 		<div class="container clearfix">
@@ -98,7 +98,7 @@
 								<span class="colomn caozuo">
 									<p class="m-t">
 										<!-- <span class="btn shopcar" data-id="${each.id}">加入购物车</span> -->
-										<a class="btn order color" href="${ctx}/app/product-zheng-${each.id?string('0')}.jhtml">点击购买</a>
+										<a class="btn order color" href="${ctx}/app/product-zheng-${each.id?string('0')}.jhtml">查看详情</a>
 									</p>
 								</span>
 							</li>

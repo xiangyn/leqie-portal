@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.leqie.portal.constants.RequestAttributes;
 import com.leqie.portal.constants.Template;
 import com.leqie.portal.constants.Url;
+import com.leqie.portal.model.OrderBuy;
 import com.leqie.portal.model.request.order.OrderPage;
 import com.leqie.portal.service.OrderService;
+import com.leqie.portal.utils.WebUtil;
 
 @Controller
 public class OrderController {
@@ -33,11 +34,19 @@ public class OrderController {
 		return Template.FAST_ORDER;
 	}
 	
+	@RequestMapping(Url.ORDER_BUY)
+	public ModelAndView buy(@ModelAttribute("model")OrderBuy model, 
+			HttpServletRequest request,
+			ModelAndView mv) {
+		mv.setViewName(Template.ORDER_BUY);
+		return mv;
+	}
+	
 	@RequestMapping(Url.ORDER_INDEX)
 	public ModelAndView index(@ModelAttribute("seach")OrderPage search, 
 			HttpServletRequest request,
 			ModelAndView mv) {
-		search.setPhone((String) request.getAttribute(RequestAttributes.PHONE_ATTR_NAME));
+		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(ALL);
 		mv.addObject("data", service.findOrder(search));
 		mv.setViewName(Template.ORDER_INDEX);
@@ -48,7 +57,7 @@ public class OrderController {
 	public ModelAndView unpay(@ModelAttribute("seach")OrderPage search, 
 			HttpServletRequest request,
 			ModelAndView mv) {
-		search.setPhone((String) request.getAttribute(RequestAttributes.PHONE_ATTR_NAME));
+		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(UNPAY);
 		mv.addObject("data", service.findOrder(search));
 		mv.setViewName(Template.ORDER_UNPAY);
@@ -59,7 +68,7 @@ public class OrderController {
 	public ModelAndView unrecv(@ModelAttribute("seach")OrderPage search, 
 			HttpServletRequest request,
 			ModelAndView mv) {
-		search.setPhone((String) request.getAttribute(RequestAttributes.PHONE_ATTR_NAME));
+		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(UNRECV);
 		mv.addObject("data", service.findOrder(search));
 		mv.setViewName(Template.ORDER_UNRECV);
@@ -70,7 +79,7 @@ public class OrderController {
 	public ModelAndView finished(@ModelAttribute("seach")OrderPage search, 
 			HttpServletRequest request,
 			ModelAndView mv) {
-		search.setPhone((String) request.getAttribute(RequestAttributes.PHONE_ATTR_NAME));
+		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(FINISHED);
 		mv.addObject("data", service.findOrder(search));
 		mv.setViewName(Template.ORDER_UNRECV);
@@ -81,7 +90,7 @@ public class OrderController {
 	public ModelAndView all(@ModelAttribute("seach")OrderPage search, 
 			HttpServletRequest request,
 			ModelAndView mv) {
-		search.setPhone((String) request.getAttribute(RequestAttributes.PHONE_ATTR_NAME));
+		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(ALL);
 		mv.addObject("data", service.findOrder(search));
 		mv.setViewName(Template.ORDER_ALL);

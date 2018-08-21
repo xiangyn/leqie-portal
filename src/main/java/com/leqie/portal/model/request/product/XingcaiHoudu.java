@@ -4,7 +4,7 @@ public class XingcaiHoudu {
 
 	private String houdu;
 	
-	private String xinghaoid;
+	private String xinghaoId;
 
 	public String getHoudu() {
 		return houdu;
@@ -14,12 +14,12 @@ public class XingcaiHoudu {
 		this.houdu = houdu;
 	}
 
-	public String getXinghaoid() {
-		return xinghaoid;
+	public String getXinghaoId() {
+		return xinghaoId;
 	}
 
-	public void setXinghaoid(String xinghaoid) {
-		this.xinghaoid = xinghaoid;
+	public void setXinghaoId(String xinghaoId) {
+		this.xinghaoId = xinghaoId;
 	}
-	
+
 }

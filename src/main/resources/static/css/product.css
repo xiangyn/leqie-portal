@@ -25,14 +25,26 @@
 .product-display .colomn .btn { display: inline-block; margin: 0 5px; cursor: pointer; }
 .product-display .colomn .btn:hover { color: #0080ff; }
 
+.product-content { margin: 40px 10px 20px 20px; }
+.product-content .order-menus { height: 50px; background: #F9F9F9; }
+.product-content .menu-item { text-align: center; background: #F6F6F9; cursor: pointer; }
+.product-content .menu-item { width: 100%; height: 100%; display: block; line-height: 50px; text-decoration: none; font-size: 14px; color: #0080ff; }
+.product-content .menu-item.active { background: #0080ff; color: #fff; }
+.product-content .panel-content { border: 1px solid #CCC; border-left: 0; } 
+.product-content .form-content .row { margin: 20px auto; }
+.product-content .form-content .form-item-msg { line-height: 42px; }
+
 .product-order { margin: 20px auto; background-color: #ECFCFC; padding: 20px; }
 .product-order .order-price { color: red; }
 .product-order .order-price .formula { font-size: 14px; }
 .product-order .order-price .order-price-value { font-size: 18px; line-height: 40px; } 
-.product-order .order-number { width: 200px; float:left; margin: 14px 0; }
+.product-order .order-number { width: 200px; float:left; margin: 14px 10px; }
 .product-order .order-button { width: 120px; height: 50px; float:right; }
-.product-order .order-button button { background: red; width: 100%; height: 100%; color: #0080ff; }
-.product-order .order-number-title {  }
+.product-order .order-button button { background: #0080ff; width: 100%; height: 100%; color: #fff; }
+.product-order .order-number-title { font-size: 15px; }
+.product-order .order-number input { border: 1px solid #afafaf; padding: 3px 5px; width: 40px; text-align: center; }
+.product-order .order-number button { border: 1px solid #afafaf; width: 24px; height: 24px; }
+
 
 #product-zheng-display .xinghao { width: 30%; }
 #product-zheng-display .gongyi { width: 20%; }

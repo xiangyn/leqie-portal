@@ -89,6 +89,9 @@ h1, h2, h3, h4, h5, h6 { color: #4d4d4d; }
 a { color: #4d4d4d; }
 a:focus { text-decoration: none; }
 
+*:focus { outline: none; } 
+button:focus, input:focus, textarea:focus { border-color: #0080ff!important; }
+
 .container { width: 1190px; height: 100%; margin: 0 auto; }
 
 .clearfix { zoom: 1; }
@@ -173,6 +176,7 @@ form .form-label.required:before { content: "*"; color: red; display: inline-blo
 .top a.color-hover { text-decoration: none; }
 .top ul > li { float: left; }
 .top .drop-down .drop-menu { width: 120px; }
+.top .shopcar span { padding: 0 1px; }
 
 .navbar { height: 80px; background: #fff; }
 .navbar .logo { display: inline-block; padding: 20px 15px; }

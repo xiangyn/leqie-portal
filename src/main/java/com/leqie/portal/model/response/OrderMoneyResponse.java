@@ -2,24 +2,24 @@ package com.leqie.portal.model.response;
 
 public class OrderMoneyResponse extends Response {
 	
-	private String ordermoney;
+	private String orderMoney;
 	
-	private String role;
+	private String rule;
 
-	public String getOrdermoney() {
-		return ordermoney;
+	public String getOrderMoney() {
+		return orderMoney;
 	}
 
-	public void setOrdermoney(String ordermoney) {
-		this.ordermoney = ordermoney;
+	public void setOrderMoney(String orderMoney) {
+		this.orderMoney = orderMoney;
 	}
 
-	public String getRole() {
-		return role;
+	public String getRule() {
+		return rule;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRule(String rule) {
+		this.rule = rule;
 	}
 	
 }

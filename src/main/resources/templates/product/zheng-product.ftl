@@ -2,14 +2,15 @@
 <html>
 <head>
 	<#include "/common/head.ftl" />
+	<link href="${ctx}/static/css/iziToast.min.css" rel="stylesheet">
 	<link href="${ctx}/static/css/font-awesome.min.css" rel="stylesheet">
 	<link href="${ctx}/static/css/product.css" rel="stylesheet">
 	<title>乐切 - 官方网站</title>
 </head>
 <body>
 	<#include "/common/top.ftl" />
-	<#assign navbarSelectedMenu='center' />
 	<#assign logoInfo='整板' />
+	<#assign navbarSelectedMenu='' />
 	<#include "/common/navbar.ftl" />
 	<div class="product">
 		<div class="container clearfix">
@@ -143,23 +144,33 @@
 						</li>
 					</ul>
 					<div class="product-order">
+						<form action="${ctx}/app/order/buy.jhtml" method="post">
+						<input type="hidden" name="zhonglei" value="整板"/>
+						<input type="hidden" name="erjimulu" value="${data.lvxing.id}"/>
+						<input type="hidden" name="chang" value="${data.arg3}"/>
+						<input type="hidden" name="kuang" value="${data.arg2}"/>
+						<input type="hidden" name="hou" value="${data.arg1}"/>
+						<input type="hidden" name="money" value="0"/>
 						<div class="row">
 							<div class="left">
 								<div class="order-price">
 									<p class="formula">计算公式：<span class="order-price-formula">加载中...</span></p>
-									<span class="order-price-value">¥ 0.00</span>
+									<span class="order-price-value">¥ 0.00</span>元
 								</div>
 							</div>
 							<div class="right clearfix">
 								<div class="order-number">
-									<span class="order-number-title">购买数量：</span>
-									<input type="text" value="1" />
+									<span class="order-number-title color">购买数量：</span>
+									<button class="minus" type="button"><span class="fa fa-minus"></span></button>
+									<input class="number" type="text" name="amount" value="1"  />
+									<button class="plus" type="button"><span class="fa fa-plus"></span></button>
 								</div>
 								<div class="order-button">
-									<button class="button">购 买</button>
+									<button type="button" id="buy-button">购 买</button>
 								</div>
 							</div>
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -168,5 +179,63 @@
 	<#include "/common/footer.ftl" />
 <#include "/common/foot.ftl" />
 <script type="text/javascript" src="${ctx}/static/js/utils.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/iziToast.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	
+	$(".order-number .minus").on("click", function() {
+		var input = $(".product-order input.number").get(0);
+		input.value = input.value * 1 - 1;
+		$(input).trigger("change");
+	});
+	$(".order-number .plus").on("click", function() {
+		var input = $(".product-order input.number").get(0);
+		input.value = input.value * 1 + 1;
+		$(input).trigger("change");
+	});
+	
+	var success = false;
+	$(".product-order input.number").on("change", function() {
+		var amount = $(this).val();
+		if($.isNumeric(amount)) {
+			$.ajax({
+				url: "${ctx}/app/product/getMoney.jo",
+				type: 'post',
+				data: $(".product-content form").serializeObject(),
+				dataType: 'json',
+				beforeSend: function() {
+					$(".order-price-formula").text("加载中...");
+					$(".order-price-value").text("¥ 0.00");
+					$("input[name='money']").val('0');
+					success = false;
+				},
+				success: function(ret) {
+					if(!ret.success || ret.data.status == '0') {
+						iziToast.error({
+					        message: '获取价格失败!',
+					        position: 'topCenter',
+					        transitionIn: 'bounceInLeft',
+					    });
+						$(".order-price-formula").text("-");
+						success = false;
+					}else {
+						$(".order-price-formula").text(ret.data.rule);
+						$(".order-price-value").text(ret.data.orderMoney);
+						$("input[name='money']").val(ret.data.orderMoney);
+						success = true;
+					}
+				}
+			});
+		}
+	}).trigger("change");
+	
+	$("#buy-button").on("click", function() {
+		if(success) {
+			$(".product-content form").submit();
+		}
+	});
+	
+});
+</script>
 </body>
 </html>

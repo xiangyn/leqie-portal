@@ -46,4 +46,14 @@ public class Api {
 	public String ORDER_MONEY = "/user/getOrderMoney";
 	
 	
+	public String SHOPCAR_INFO = "/user/countGouwucheByUser";
+	
+	
+	public String ADDRESS_LIST = "/user/getAddressById";
+	
+	public String ADDRESS_NEW = "/user/saveAddress";
+	
+	public String ADDRESS_EDIT = "/user/updateAddress";
+	
+	public String ADDRESS_DEL = "/user/deleteAddress";
 }

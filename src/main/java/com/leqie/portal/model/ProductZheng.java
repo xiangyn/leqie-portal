@@ -51,6 +51,8 @@ public class ProductZheng {
 	private String zhuangtai;
 	
 	private Cate productCate;
+	
+	private Lvxing lvxing;
 
 	public String getArg1() {
 		return arg1;
@@ -250,6 +252,14 @@ public class ProductZheng {
 
 	public void setProductCate(Cate productCate) {
 		this.productCate = productCate;
+	}
+
+	public Lvxing getLvxing() {
+		return lvxing;
+	}
+
+	public void setLvxing(Lvxing lvxing) {
+		this.lvxing = lvxing;
 	}
 	
 }

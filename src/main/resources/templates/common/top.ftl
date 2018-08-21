@@ -31,7 +31,9 @@
 							</div>
 						</div>
 					</li>
-					<li><a class="color-hover" href="${ctx}/app/shoppingCar.jhtml">我的购物车</a></li>
+					<#if Session.__user?exists>
+					<li><a class="color-hover shopcar" href="${ctx}/app/shoppingCar.jhtml">我的购物车<span class='color'>(${Session.__shopCarCount!0})</span></a></li>
+					</#if>
 				</ul>
 			</div>
 		</div>

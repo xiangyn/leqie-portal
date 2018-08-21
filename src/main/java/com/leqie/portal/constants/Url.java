@@ -34,6 +34,8 @@ public class Url {
 	
 	public static final String ORDER_INDEX = "/app/order/index" + PAGE_SUFFIX;
 	
+	public static final String ORDER_BUY = "/app/order/buy" + PAGE_SUFFIX;
+	
 	public static final String ORDER_UNPAY = "/app/order/unpay" + PAGE_SUFFIX;
 	
 	public static final String ORDER_UNSEND = "/app/order/unsend" + PAGE_SUFFIX;

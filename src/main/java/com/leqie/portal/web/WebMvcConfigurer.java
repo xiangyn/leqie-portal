@@ -3,7 +3,9 @@ package com.leqie.portal.web;
 import java.nio.charset.Charset;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
@@ -47,7 +49,8 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
         super.addInterceptors(registry);
     }
     
-    private UserInterceptor getInterceptor() {
+    @Bean(autowire = Autowire.BY_TYPE)
+    public UserInterceptor getInterceptor() {
     	UserInterceptor userInterceptor = new UserInterceptor();
     	userInterceptor.setRedirectUrl(redirectUrl);
     	userInterceptor.setCharset(Charset.forName(charset));
