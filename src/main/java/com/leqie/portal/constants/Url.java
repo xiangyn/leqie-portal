@@ -78,7 +78,7 @@ public class Url {
 	public static final String USER_UPDATE_PWD = "/app/user/updatePwd" + PAGE_SUFFIX;
 	
 	
-	public static final String WALLET = "/app/wallet" + PAGE_SUFFIX;
+	public static final String WALLET = "/app/wallet";
 	
 	public static final String WALLET_RECORD = "/app/wallet/record" + PAGE_SUFFIX;
 	

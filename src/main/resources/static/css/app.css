@@ -1,5 +1,5 @@
 .app { margin: 20px auto; }
-.app-menus { float: left; width: 180px; height: 100%;  }
+.app-menus { float: left; width: 20%; height: 100%;  }
 .app-menus a { font-size: 14px; text-decoration: none; line-height: 25px; }
 .app-menus .app-menus-title { font-size: 16px; margin-bottom: 20px; }
 .app-menus .app-menu-list { margin: 4px 0 4px 25px; }

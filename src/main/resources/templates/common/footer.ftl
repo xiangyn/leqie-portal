@@ -1,24 +1,3 @@
-<!--
-<div class="footer">
-	<div class="container">
-		<div class="footer-link">
-			<a href="#" >关于公司</a> |
-			<a href="#" >联系我们</a> |
-			<a href="#" >法律声明</a> |
-			<a href="#" >合作伙伴</a>
-		</div>
-		<hr />
-		<p class="footer-copyright">Copyright ©2018 江苏苏州乐切科技有限公司</p>
-		<div class="footer-images">
-			<img src="${ctx}/static/images/footer/360.png" />
-			<img src="${ctx}/static/images/footer/alarm.png" />
-			<img src="${ctx}/static/images/footer/aqkx.png" />
-			<img src="${ctx}/static/images/footer/hy.png" />
-			<img src="${ctx}/static/images/footer/integrity.png" />
-		</div>
-	</div>
-</div>
--->
 <div class="footer">
 	<div class="container">
 		<div class="footer-links">

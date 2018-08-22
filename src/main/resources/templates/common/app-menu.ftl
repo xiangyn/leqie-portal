@@ -14,7 +14,7 @@
 			</#if>
 		</li>
 		<li class="app-menu-item">
-			<a class="<#if _uri?starts_with('/app/wallet')>color</#if>" href="${ctx}/app/wallet.jhtml"><#if _uri?starts_with('/app/wallet')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的钱包</a>
+			<a class="<#if _uri?starts_with('/app/wallet')>color</#if>" href="${ctx}/app/wallet"><#if _uri?starts_with('/app/wallet')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的钱包</a>
 			<#if _uri?starts_with('/app/wallet')>
 			<ul class="app-menu-list">
 				<li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="${ctx}/app/wallet/record.jhtml">交易流水</a></li>
