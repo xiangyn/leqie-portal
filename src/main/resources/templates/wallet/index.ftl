@@ -33,11 +33,13 @@
                 <ul style="list-style: none;display: block;overflow: hidden;width:100%;margin-top:20px;">
                     <li class="li1"><a href="/app/wallet">当前余额</a></li>
                     <li class="li1"><a href="/app/wallet/chargeList?p=1">交易明细</a></li>
-                    <li class="li1"><a href="">申请提现</a></li>
-                    <li class="li1"><a href="">消费明细${tip}</a></li>
+                    <li class="li1"><a href="/app/wallet/withdraw">申请提现</a></li>
+                    <li class="li1"><a href="/app/wallet/consumeList?p=1">消费明细</a></li>
                 </ul>
 				<#if tip?? && "userMoney"==tip ><#include "wallet_userMoney.ftl" /></#if>
                 <#if tip?? && "chargeList"==tip ><#include "wallet_chargeList.ftl" /></#if>
+                <#if tip?? && "consumeList"==tip ><#include "wallet_consumeList.ftl" /></#if>
+                <#if tip?? && "withdraw"==tip ><#include "wallet_withdraw.ftl" /></#if>
 			</div>
 		</div>
 	</div>

@@ -60,4 +60,42 @@ public class WalletController {
 		return mv;
 	}
 
+
+	@RequestMapping("app/wallet/consumeList")
+	public ModelAndView consumeList(@RequestParam(name = "p") String page, HttpServletRequest request, ModelAndView mv, ModelMap map) {
+		User user = (User)request.getSession().getAttribute(Session.USER);
+		String url = "http://118.31.35.233:8080/leqie/user/qianBaoBillList?userId="+user.getId()+"&pageNum="+page;
+		System.out.println("--url--"+url);
+		String json = HttpHelper.httpGet(url);
+		JSONObject result = JsonUtils.parse(json, JSONObject.class);
+		if(Integer.parseInt(result.get("status").toString()) ==1) {
+			map.put("tip", "consumeList");
+			map.put("consumeList",(List)result.get("result"));
+			map.put("page",Integer.parseInt(page));
+			map.put("totalRecords", ((List)result.get("result")).size());
+		}
+		mv.setViewName(Template.WALLET_INDEX);
+		return mv;
+	}
+
+	@RequestMapping("app/wallet/withdraw")
+	public ModelAndView withdraw(ModelAndView mv, ModelMap map) {
+		map.put("tip","withdraw");
+		mv.setViewName(Template.WALLET_INDEX);
+		return mv;
+	}
+
+	@RequestMapping("app/wallet/saveWithdraw")
+	public Object saveWithdraw(HttpServletRequest request) {
+		String money = request.getParameter("money");
+		String name = request.getParameter("name");
+		String account = request.getParameter("account");
+		String person = request.getParameter("person");
+		String address = request.getParameter("address");
+		return null;
+
+	}
+
+
+
 }
