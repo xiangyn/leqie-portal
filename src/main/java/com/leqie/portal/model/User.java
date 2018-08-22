@@ -3,8 +3,9 @@ package com.leqie.portal.model;
 import java.util.Date;
 
 public class User {
+	
+	private int id;
 
-    private String id;
 	private Date statusDate;
 	
 	private String no;
@@ -46,6 +47,14 @@ public class User {
 	private UserType userType;
 	
 	private int status;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Date getStatusDate() {
 		return statusDate;
@@ -215,11 +224,4 @@ public class User {
 		this.status = status;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 }

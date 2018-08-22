@@ -18,10 +18,11 @@
 			<#include "/common/app-menu.ftl" />
 			<div class="col-right address">
 				<div class="bread-crumb">
-					<h3>新增收货地址</h3>
+					<h3>编辑收货地址</h3>
 				</div>
 				<div class="form-content">
 					<form id="_form">
+						<input type="hidden" name="id" value="${data.id}"/>
 						<div class="form-content">
 							<div class="row">
 								<div class="col eighth text-right">
@@ -29,7 +30,7 @@
 								</div>
 								<div class="col half">
 									<div class="form-item">
-										<input name="name" type="text" placeholder="请输入收件人" required="required" />
+										<input name="name" type="text" placeholder="请输入收件人" required="required" value="${data.name}"/>
 									</div>
 									<span class="form-item-msg"></span>
 								</div>
@@ -40,7 +41,7 @@
 								</div>
 								<div class="col half">
 									<div class="form-item">
-										<input name="phone" type="text" placeholder="请输入联系方式" required="required" />
+										<input name="phone" type="text" placeholder="请输入联系方式" required="required" value="${data.phone}"/>
 									</div>
 									<span class="form-item-msg"></span>
 								</div>
@@ -50,11 +51,11 @@
 									<label class="form-label required">地址信息</label>
 								</div>
 								<div class="col half">
-									<input type="hidden" name="sheng" value=""/>
-									<input type="hidden" name="shi" value=""/>
-									<input type="hidden" name="qu" value=""/>
+									<input type="hidden" name="sheng" value="${data.sheng}"/>
+									<input type="hidden" name="shi" value="${data.shi}"/>
+									<input type="hidden" name="qu" value="${data.qu}"/>
 									<div class="form-item">
-										<input id="address" name="address" type="text" placeholder="请选择地址信息" required="required" readonly="readonly" />
+										<input id="address" name="address" type="text" placeholder="请选择地址信息" required="required" readonly="readonly" value="${data.sheng}-${data.shi}-${data.qu}" />
 									</div>
 									<span class="form-item-msg"></span>
 								</div>
@@ -65,7 +66,7 @@
 								</div>
 								<div class="col half">
 									<div class="form-item">
-										<input name="detailAddress" type="text" placeholder="请输入详细地址" required="required" />
+										<input name="detailAddress" type="text" placeholder="请输入详细地址" required="required" value="${data.detailAddress}"/>
 									</div>
 									<span class="form-item-msg"></span>
 								</div>
@@ -76,7 +77,7 @@
 								</div>
 								<div class="col half">
 									<div class="form-item">
-										<input type="checkbox" name="moren" />
+										<input type="checkbox" name="moren" <#if data.moren=='1'>checked</#if> >
 									</div>
 									<span class="form-item-msg"></span>
 								</div>
@@ -116,21 +117,21 @@ $(function() {
 			$("input[name='shi']", this).val(address[1]);
 			$("input[name='qu']", this).val(address[2]);
 			$.ajax({
-				url: "${ctx}/app/recvAddress/save.jo",
+				url: "${ctx}/app/recvAddress/update.jo",
 				type: 'POST',
 				data: $("#_form").serializeObject(),
 				dataType:'json',
 				success: function(ret) {
 					if(ret.success) {
 						iziToast.success({
-					        message: '添加地址成功!',
+					        message: '修改地址成功!',
 					        position: 'topCenter',
 					        transitionIn: 'bounceInLeft',
 					        onClose: success
 					    });
 					}else {
 						iziToast.error({
-					        message: '添加地址失败，请刷新后再试!',
+					        message: '修改地址失败，请刷新后再试!',
 					        position: 'topCenter',
 					        transitionIn: 'bounceInLeft'
 					    });

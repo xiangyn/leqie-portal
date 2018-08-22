@@ -13,43 +13,7 @@
 	<#include "/common/navbar.ftl" />
 	<div class="product">
 		<div class="container clearfix">
-			<div class="product-title">
-				<div class="product-types">
-					<h2>所有产品</h2>
-					<ul class="product-type-list">
-						<li class="product-type-item active">
-							<a href="${ctx}/app/product-zheng.jhtml" >
-								<span class="product-type-icon"><img src="${ctx}/static/images/product-1-icon.png" alt="整板" /></span>
-								<span class="product-type-name">整 板</span>
-							</a>
-						</li>
-						<li class="product-type-item">
-							<a href="${ctx}/app/product-lingqie.jhtml" >
-								<span class="product-type-icon"><img src="${ctx}/static/images/product-2-icon.png" alt="零切"/></span>
-								<span class="product-type-name">零 切</span>
-							</a>
-						</li>
-						<li class="product-type-item">
-							<a href="${ctx}/app/product-yuanbang.jhtml" >
-								<span class="product-type-icon"><img src="${ctx}/static/images/product-3-icon.png" alt="圆棒"/></span>
-								<span class="product-type-name">圆 棒</span>
-							</a>
-						</li>
-						<li class="product-type-item">
-							<a href="${ctx}/app/product-xingcai.jhtml" >
-								<span class="product-type-icon"><img src="${ctx}/static/images/product-4-icon.png" alt="型材"/></span>
-								<span class="product-type-name">型 材</span>
-							</a>
-						</li>
-						<li class="product-type-item">
-							<a href="${ctx}/app/product-guancai.jhtml" >
-								<span class="product-type-icon"><img src="${ctx}/static/images/product-5-icon.png" alt="管材"/></span>
-								<span class="product-type-name">管 材</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+			<#include "/product/product-menu.ftl"/>
 			<div class="product-content">
 				<h1 class="color">整版产品详情</h1>
 				<div class="product-search">

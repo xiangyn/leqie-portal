@@ -40,7 +40,7 @@
 		</li>
 		<li class="app-menu-item">
 			<a class="<#if _uri?starts_with('/app/recvAddress')>color</#if>" href="${ctx}/app/recvAddress.jhtml"><#if _uri?starts_with('/app/recvAddress')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 收货地址</a>
-			<#if _uri?starts_with('/app/recvAddess')>
+			<#if _uri?starts_with('/app/recvAddress')>
 			<ul class="app-menu-list">
 				<li class="app-menu-item"><a class="<#if _uri=='/app/recvAddress/new.jhtml'>color</#if>"  href="${ctx}/app/recvAddress/new.jhtml">新增地址</a></li>
 			</ul>

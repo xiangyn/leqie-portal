@@ -49,7 +49,6 @@ public class IndexPostController {
 		User user = userService.login(loginUser);
 		if(user != null) {
 			request.getSession().setAttribute(Session.USER, user);
-			//request.getSession().setAttribute("userId", );
 			return ResultUtil.success();
 		}else {
 			return ResultUtil.error();

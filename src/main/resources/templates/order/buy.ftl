@@ -36,10 +36,11 @@
 				</div> -->
 				<div class="address-more">
 					<button type="button" class="btn">显示更多 <span class="fa fa-plus"></button>
+					<!-- <button type="button" class="btn">添加地址 <span class="fa fa-plus"></button> -->
 				</div>
 				<p class="loading-info text-center color">正在加载个人收货地址...</p>
 				<div class="empty-info">
-					<p class="text-center">暂无收货地址，请<a href="${ctx}/app/recvAddress/new.jhtml" class="color">点击添加收货地址</a></p>
+					<p class="text-center">暂无收货地址，请<a target="_blank" href="${ctx}/app/recvAddress/new.jhtml" class="color">点击添加收货地址</a></p>
 				</div>
 			</div>
 		</div>
@@ -58,7 +59,19 @@
 				<li class="product-item clearfix">
 					<span class="column zhonglei">${model.zhonglei}</span>
 					<span class="column xinghao">${model.xinghaoName!'-'}</span>
-					<span class="column params">-</span>
+					<span class="column params">
+						<#if model.chang?exists><p>长度：${model.chang} mm</p></#if>
+						<#if model.kuang?exists>
+							<#if model.zhonglei == '圆棒'>
+								<p>直径：${model.chang} mm</p>
+							<#else/>
+								<p>宽度：${model.chang} mm</p>
+							</#if>
+						</#if>
+						<#if model.hou?exists><p>厚度：${model.hou} mm</p></#if>
+						<#if model.waijing?exists><p>外径：${model.hou} mm</p></#if>
+						<#if model.neijing?exists><p>内径：${model.hou} mm</p></#if>
+					</span>
 					<span class="column type">${model.type!'-'}</span>
 					<span class="column amount">${model.amount}</span>
 					<span class="column money">${model.money}元</span>
@@ -96,7 +109,16 @@ $(function() {
 					if(ret.data.length == 0) {
 						$(".address-list .empty-info").css("display", "block");
 					}else {
-						
+						$(".address-list .empty-info").css("display", "none");
+						for(var i=0; i<ret.data.length; i++) {
+							$('<div class="address-item '+(ret.data[i].moren * 1 == 1 ? 'active': '')+'" data-id="'+ret.data[i].id+'">\
+									<div class="address-info unselect">\
+									<p>联系人：<span>'+ret.data[i].name+'</span></p>\
+									<p>联系方式：<span>'+ret.data[i].phone+'</span></p>\
+									<p>地址：<span>'+ret.data[i].address+'</span></p>\
+								</div>\
+							</div>').appendTo($(".address-list"));
+						}
 					}
 				}else {
 					iziToast.error({
@@ -107,6 +129,11 @@ $(function() {
 				}
 			}
 		});
+	});
+	
+	$(".address-list").on("click", ".address-item", function() {
+		$(".address-list .address-item").removeClass("active");
+		$(this).addClass("active");
 	});
 	
 	$(document).trigger("loadAddress");

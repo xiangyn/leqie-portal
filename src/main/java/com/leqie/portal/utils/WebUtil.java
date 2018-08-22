@@ -13,7 +13,7 @@ public class WebUtil {
 	
 	public static String getUserId(HttpServletRequest request) {
 		User user = getUser(request);
-		return user == null ? null : user.getNo();
+		return user == null ? null : Integer.toString(user.getId());
 	}
 	
 	public static String getUserPhone(HttpServletRequest request) {
