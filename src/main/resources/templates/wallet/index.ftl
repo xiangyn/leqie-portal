@@ -4,14 +4,12 @@
 	<#include "/common/head.ftl" />
 	<link href="${ctx}/static/css/font-awesome.min.css" rel="stylesheet">
 	<link href="${ctx}/static/css/app.css" rel="stylesheet">
-    <script type="text/javascript" src="${ctx}/static/js/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript" src="${ctx}/static/js/utils.js"></script>
     <style type="text/css">
         .li1{
             float: left;
             list-style: none;
             border-right: 1px solid #000;
-            width: 20%;
+            width: 18%;
             text-align: center;
             font-size: 16px;
         };
@@ -32,14 +30,17 @@
                 </li>
                 <ul style="list-style: none;display: block;overflow: hidden;width:100%;margin-top:20px;">
                     <li class="li1"><a href="/app/wallet">当前余额</a></li>
-                    <li class="li1"><a href="/app/wallet/chargeList?p=1">交易明细</a></li>
-                    <li class="li1"><a href="/app/wallet/withdraw">申请提现</a></li>
+                    <li class="li1"><a href="/app/wallet/chargeList?p=1">充值明细</a></li>
                     <li class="li1"><a href="/app/wallet/consumeList?p=1">消费明细</a></li>
+                    <li class="li1"><a href="/app/wallet/withdraw">申请提现</a></li>
+                    <li class="li1"><a href="/app/wallet/withdrawList?p=1">提现列表</a></li>
+
                 </ul>
 				<#if tip?? && "userMoney"==tip ><#include "wallet_userMoney.ftl" /></#if>
                 <#if tip?? && "chargeList"==tip ><#include "wallet_chargeList.ftl" /></#if>
                 <#if tip?? && "consumeList"==tip ><#include "wallet_consumeList.ftl" /></#if>
                 <#if tip?? && "withdraw"==tip ><#include "wallet_withdraw.ftl" /></#if>
+                <#if tip?? && "withdrawList"==tip ><#include "wallet_withdrawList.ftl" /></#if>
 			</div>
 		</div>
 	</div>
