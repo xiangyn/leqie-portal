@@ -13,7 +13,7 @@
 		<#local page = totalPageCount >
 	</#if>
 	<#if ( totalPageCount > 1 ) >
-		<ul class="mypagination custom-modal">
+		<ul class="mypagination custom-modal" style="float:right">
 		  <li><span class="txt" id="pagenationpagetext">Page</span></li>
 		  <li> <label for="inputPagination" class="sr-only">Page</label><input type=text id="inputPagination" value="${(page)?c}"/></li>
 		  <li><span class="txt" id="pagenationtotalpagecount">of ${totalPageCount?c}</span></li>

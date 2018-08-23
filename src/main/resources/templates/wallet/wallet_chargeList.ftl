@@ -1,6 +1,6 @@
 <#import "../common/reportpagination.ftl" as pagination>
-<div id="content" style="border:1px solid #000;height: 500px;">
-    <table>
+<div id="content" class="table-responsive">
+    <table class="table card-table table-vcenter text-nowrap">
         <thead>
         <tr>
             <th>编号</th>
@@ -20,7 +20,7 @@
     </#list>
         </tbody>
     </table>
-    <div class="row">
+    <div class="row" style="display:block">
     <#if totalRecords??>
                         <@pagination.pagination 2 page totalRecords>
                         </@pagination.pagination>

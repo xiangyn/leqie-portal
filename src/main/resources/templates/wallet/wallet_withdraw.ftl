@@ -1,11 +1,11 @@
-<form id="form1" name="form1">
-	<div><span>提现金额</span><input type="text" name="money" id="money"/></div>
-    <div><span>开户行名称</span><input type="text" name="name" id="name"/></div>
-    <div><span>开户行账号</span><input type="text" name="account" id="account"/></div>
-    <div><span>开户人</span><input type="text" name="person" id="person"/></div>
-    <div><span>开户行地址</span><input type="text" name="address" id="address"/></div>
+<form id="form1" name="form1" >
+	<div class="form-group"><label class="form-label">提现金额</label><input class="form-control" type="text" name="money" id="money"/></div>
+    <div class="form-group"><label class="form-label">开户行名称</label><input class="form-control" type="text" name="name" id="name"/></div>
+    <div class="form-group"><label class="form-label">开户行账号</label><input class="form-control" type="text" name="account" id="account"/></div>
+    <div class="form-group"><label class="form-label">开户人</label><input class="form-control" type="text" name="person" id="person"/></div>
+    <div class="form-group"><label class="form-label">开户行地址</label><input class="form-control" type="text" name="address" id="address"/></div>
 </form>
-<input id="myButton" type="button" value="提交"/>
+<input id="myButton" type="button" class="btn btn-primary ml-auto" style="float:right" value="提交"/>
 <script>
 $(function(){
     var myData = {

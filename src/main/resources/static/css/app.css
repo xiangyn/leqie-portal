@@ -5,7 +5,7 @@
 .app-menus .app-menu-list { margin: 4px 0 4px 25px; }
 .app-menus .app-menu-list li { font-size: 0.8; }
 
-.app .col-right { border-left: 1px solid #CCC; width: 990px; margin-left: 10px; float: right; box-sizing: border-box; padding: 10px 0 20px 20px; }
+.app .col-right { border-left: 1px solid #CCC; width:80%; margin-left: 10px; float: left; box-sizing: border-box; padding: 10px 0 20px 20px; }
 .app .col-right .bread-crumb { margin-bottom: 10px; }
 .app .col-right .bread-crumb h3 { font-size: 15px; color: #0080ff; font-weight: normal; }
 .app .col-right .buttons { margin: 15px 0; }
