@@ -17,12 +17,15 @@
 			<a class="<#if _uri?starts_with('/app/wallet')>color</#if>" href="${ctx}/app/wallet"><#if _uri?starts_with('/app/wallet')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的钱包</a>
 			<#if _uri?starts_with('/app/wallet')>
 			<ul class="app-menu-list">
-				<li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="${ctx}/app/wallet/record.jhtml">交易流水</a></li>
+				<li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="/app/wallet/chargeList?p=1">充值明细</a></li>
+                <li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="/app/wallet/consumeList?p=1">消费明细</a></li>
+                <li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="/app/wallet/withdraw">申请提现</a></li>
+                <li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="/app/wallet/withdrawList?p=1">提现列表</a></li>
 			</ul>
 			</#if>
 		</li>
 		<li class="app-menu-item">
-			<a class="<#if _uri?starts_with('/app/overdraft')>color</#if>" href="${ctx}/app/overdraft.jhtml"><#if _uri?starts_with('/app/overdraft')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的白条</a>
+			<a class="<#if _uri?starts_with('/app/overdraft')>color</#if>" href="${ctx}/app/overdraft"><#if _uri?starts_with('/app/overdraft')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的白条</a>
 			<#if _uri?starts_with('/app/overdraft')>
 			<ul class="app-menu-list">
 				<li class="app-menu-item"><a class="<#if _uri=='/app/overdraft/record.jhtml'>color</#if>" href="${ctx}/app/overdraft/record.jhtml">使用记录</a></li>

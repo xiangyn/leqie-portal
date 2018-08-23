@@ -59,7 +59,7 @@ public class Url {
 	public static final String INVOICE_OPEN = "/app/invoice/open" + PAGE_SUFFIX;
 	
 	
-	public static final String OVERDRAFT = "/app/overdraft" + PAGE_SUFFIX;
+	public static final String OVERDRAFT = "/app/overdraft";
 	
 	public static final String OVERDRAFT_APPLY = "/app/overdraft/apply" + PAGE_SUFFIX;
 	
