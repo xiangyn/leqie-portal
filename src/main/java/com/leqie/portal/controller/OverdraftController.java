@@ -162,7 +162,7 @@ public class OverdraftController {
 			map.put("tip", "billList");
 			map.put("billList", (List) result.get("result"));
 			map.put("page", Integer.parseInt(page));
-			map.put("totalRecords", ((List) result.get("result")).size());
+			map.put("totalRecords", result.get("count"));
 		}
 		mv.setViewName(Template.OVERDRAFT_INDEX);
 		return mv;
@@ -187,7 +187,7 @@ public class OverdraftController {
 			map.put("tip", "repaymentList");
 			map.put("repaymentList", (List) result.get("result"));
 			map.put("page", Integer.parseInt(page));
-			map.put("totalRecords", ((List) result.get("result")).size());
+			map.put("totalRecords", result.get("count"));
 		}
 		mv.setViewName(Template.OVERDRAFT_INDEX);
 		return mv;

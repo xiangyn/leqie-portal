@@ -20,7 +20,7 @@
     </table>
     <div class="row">
     <#if totalRecords??>
-                        <@pagination.pagination 2 page totalRecords>
+                        <@pagination.pagination 10 page totalRecords>
                         </@pagination.pagination>
     </#if>
     </div>

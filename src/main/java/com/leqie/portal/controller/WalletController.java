@@ -53,7 +53,7 @@ public class WalletController {
             map.put("tip", "chargeList");
             map.put("chargeList", (List) result.get("result"));
             map.put("page", Integer.parseInt(page));
-            map.put("totalRecords", ((List) result.get("result")).size());
+            map.put("totalRecords", result.get("count"));
         }
         mv.setViewName(Template.WALLET_INDEX);
         return mv;
@@ -71,7 +71,7 @@ public class WalletController {
             map.put("tip", "consumeList");
             map.put("consumeList", (List) result.get("result"));
             map.put("page", Integer.parseInt(page));
-            map.put("totalRecords", ((List) result.get("result")).size());
+            map.put("totalRecords", result.get("count"));
         }
         mv.setViewName(Template.WALLET_INDEX);
         return mv;
@@ -119,7 +119,7 @@ public class WalletController {
             map.put("tip", "withdrawList");
             map.put("withdrawList", (List) result.get("list"));
             map.put("page", Integer.parseInt(page));
-            map.put("totalRecords", ((List) result.get("list")).size());
+            map.put("totalRecords", result.get("count"));
         }
         mv.setViewName(Template.WALLET_INDEX);
         return mv;
