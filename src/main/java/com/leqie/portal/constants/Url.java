@@ -82,6 +82,6 @@ public class Url {
 	
 	public static final String WALLET_RECORD = "/app/wallet/record" + PAGE_SUFFIX;
 
-	public static final String SERVER_URL="http://118.31.35.233:8080";
+	public static final String SERVER_URL="http://118.31.35.233:8999";
 	
 }
