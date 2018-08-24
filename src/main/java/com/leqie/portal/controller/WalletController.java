@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+import static com.leqie.portal.constants.Url.SERVER_URL;
+
 @RestController
 @RequestMapping(Url.WALLET)
 public class WalletController {
@@ -24,7 +26,7 @@ public class WalletController {
         mv.setViewName(Template.WALLET_INDEX);
 
         User user = (User) request.getSession().getAttribute(Session.USER);
-        String url = "http://118.31.35.233:8080/leqie/user/getQianBao?userId=" + user.getId();
+        String url = SERVER_URL+"/leqie/user/getQianBao?userId=" + user.getId();
         String json = HttpHelper.httpGet(url);
         JSONObject result = JsonUtils.parse(json, JSONObject.class);
         if (Integer.parseInt(result.get("status").toString()) == 1) {
@@ -43,7 +45,7 @@ public class WalletController {
     @GetMapping("/chargeList")
     public ModelAndView chargeList(@RequestParam(name = "p") String page, HttpServletRequest request, ModelAndView mv, ModelMap map) {
         User user = (User) request.getSession().getAttribute(Session.USER);
-        String url = "http://118.31.35.233:8080/leqie/user/qianbaoChongZhiList?userId=" + user.getId() + "&pageNum=" + page;
+        String url = SERVER_URL+"/leqie/user/qianbaoChongZhiList?userId=" + user.getId() + "&pageNum=" + page;
         System.out.println("--url--" + url);
         String json = HttpHelper.httpGet(url);
         JSONObject result = JsonUtils.parse(json, JSONObject.class);
@@ -61,7 +63,7 @@ public class WalletController {
     @GetMapping("/consumeList")
     public ModelAndView consumeList(@RequestParam(name = "p") String page, HttpServletRequest request, ModelAndView mv, ModelMap map) {
         User user = (User) request.getSession().getAttribute(Session.USER);
-        String url = "http://118.31.35.233:8080/leqie/user/qianBaoBillList?userId=" + user.getId() + "&pageNum=" + page;
+        String url = SERVER_URL+"/leqie/user/qianBaoBillList?userId=" + user.getId() + "&pageNum=" + page;
         System.out.println("--url--" + url);
         String json = HttpHelper.httpGet(url);
         JSONObject result = JsonUtils.parse(json, JSONObject.class);
@@ -99,7 +101,7 @@ public class WalletController {
         params[3] = new BasicNameValuePair("bankNo", account);
         params[4] = new BasicNameValuePair("bankName", person);
         params[5] = new BasicNameValuePair("bankAddress", address);
-        String url = "http://118.31.35.233:8080/leqie/user/withdrawSave";
+        String url = SERVER_URL+"/leqie/user/withdrawSave";
         String json = HttpHelper.httpPost(url, params, null, "application/json");
         JSONObject result = JsonUtils.parse(json, JSONObject.class);
         System.out.println(result);
@@ -109,7 +111,7 @@ public class WalletController {
     @GetMapping("/withdrawList")
     public ModelAndView withdrawList(@RequestParam(name = "p") String page, HttpServletRequest request, ModelAndView mv, ModelMap map) {
         User user = (User) request.getSession().getAttribute(Session.USER);
-        String url = "http://118.31.35.233:8080/leqie/user/withdrawList?userId=" + user.getId() + "&p=" + page;
+        String url = SERVER_URL+"/leqie/user/withdrawList?userId=" + user.getId() + "&p=" + page;
         System.out.println("--url--" + url);
         String json = HttpHelper.httpGet(url);
         JSONObject result = JsonUtils.parse(json, JSONObject.class);

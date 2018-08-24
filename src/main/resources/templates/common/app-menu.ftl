@@ -28,7 +28,8 @@
 			<a class="<#if _uri?starts_with('/app/overdraft')>color</#if>" href="${ctx}/app/overdraft"><#if _uri?starts_with('/app/overdraft')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的白条</a>
 			<#if _uri?starts_with('/app/overdraft')>
 			<ul class="app-menu-list">
-				<li class="app-menu-item"><a class="<#if _uri=='/app/overdraft/record.jhtml'>color</#if>" href="${ctx}/app/overdraft/record.jhtml">使用记录</a></li>
+				<li class="app-menu-item"><a class="<#if _uri=='/app/overdraft/record.jhtml'>color</#if>" href="${ctx}/app/overdraft/billList?p=1">使用记录</a></li>
+                <li class="app-menu-item"><a class="<#if _uri=='/app/overdraft/record.jhtml'>color</#if>" href="${ctx}/app/overdraft/repaymentList?p=1">还款记录</a></li>
 			</ul>
 			</#if>
 		</li>

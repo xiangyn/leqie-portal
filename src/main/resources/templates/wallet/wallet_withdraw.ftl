@@ -8,14 +8,6 @@
 <input id="myButton" type="button" class="btn btn-primary ml-auto" style="float:right" value="提交"/>
 <script>
 $(function(){
-    var myData = {
-        "money":$("#money").val(),
-        "name":$("#name").val(),
-        "account":$("#account").val(),
-        "person":$("#person").val(),
-        "address":$("#address").val()
-    }
-
     var ajaxFormOption = {
         type: "post",  //提交方式
         dataType: "json", //数据类型

@@ -5,10 +5,6 @@
     <input type="file" id="upload3" onchange="uploadPic()"  name="pic" style="display: none;">
     <input type="file" id="upload4" onchange="uploadPic()"  name="pic" style="display: none;">
 
-
-
-
-
     <label>营业执照上传</label>
     <div id="div1" style="background-color: #000000;height: 60px;display:block;overflow:hidden;width:60px;">
         <img width="100" height="100" id="img1"/>
@@ -36,7 +32,7 @@
     </div>
     <input  name="imgUrl4" id="path4"/>
 </form>
-<input id="myButton" type="button" class="btn btn-primary ml-auto" style="float:right" value="提交"/>
+<#if tip?? && tip =="showOverdraft"><input id="myButton" type="button" class="btn btn-primary ml-auto" style="float:right" value="提交"/></#if>
 <script>
     var picOrder =1;
     $(function () {
@@ -58,7 +54,7 @@
         })
 
         var ajaxFormOption = {
-            type: "post",  //提交方式
+            type: "put",  //提交方式
             dataType: "json", //数据类型
             url: "overdraft", //请求url
             success: function (data) { //提交成功的回调函数

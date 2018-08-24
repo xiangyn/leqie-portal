@@ -16,6 +16,11 @@
 			<#include "/common/app-menu.ftl" />
 			<div class="col-right ">
 				<#if tip?? && "applyOverdraft"==tip ><#include "applyOverdraft.ftl" /></#if>
+				<#if tip?? && "editOverdraft"==tip ><#include "editOverdraft.ftl" /></#if>
+				<#if tip?? && "showOverdraft"==tip ><#include "editOverdraft.ftl" /></#if>
+				<#if tip?? && "refuseOverdraft"==tip ><#include "refuseOverdraft.ftl" /></#if>
+				<#if tip?? && "billList"==tip ><#include "billList.ftl" /></#if>
+				<#if tip?? && "repaymentList"==tip ><#include "repaymentList.ftl" /></#if>
 			</div>
 		</div>
 	</div>
