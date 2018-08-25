@@ -19,7 +19,7 @@
 						<div class="drop-down">
 							<a class="drop-button color-hover" href="javascript:void(0);">APP下载<span class="fa fa-angle-down"></span></a>
 							<div class="drop-menu">
-								<img src="${ctx}/static/images/app-download.jpg" alt="APP下载" />
+								<img src="${ctx}/static/images/app-download.png" alt="APP下载" />
 							</div>
 						</div>
 					</li>
@@ -27,12 +27,12 @@
 						<div class="drop-down">
 							<a class="drop-button color-hover" href="javascript:void(0);">微信公众号<span class="fa fa-angle-down"></span></a>
 							<div class="drop-menu">
-								<img src="${ctx}/static/images/wechat-qcode.jpg" alt="微信公众号" />
+								<img src="${ctx}/static/images/wechat-qrcode.png" alt="微信公众号" />
 							</div>
 						</div>
 					</li>
 					<#if Session.__user?exists>
-					<li><a class="color-hover shopcar" href="${ctx}/app/shoppingCar.jhtml">我的购物车<span class='color'>(${Session.__shopCarCount!0})</span></a></li>
+					<li><a class="color-hover shopcar" href="${ctx}/app/shoppingCar.jhtml">我的购物车<span class='color' id="shopcar-count" data-value="${Session.__shopCarCount!0}">(${Session.__shopCarCount!0})</span></a></li>
 					</#if>
 				</ul>
 			</div>

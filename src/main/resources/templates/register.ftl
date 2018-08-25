@@ -112,6 +112,7 @@
 	</div>
 <#include "/common/foot.ftl" />
 <script type="text/javascript" src="${ctx}/static/js/iziToast.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/util.js"></script>
 <script type="text/javascript">
 $(function() {
 	

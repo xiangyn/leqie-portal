@@ -7,6 +7,8 @@ public class Result<T> {
 
 	private boolean success;
 	
+	private String msg;
+	
 	@JsonInclude(Include.NON_NULL)
 	private T data;
 	
@@ -16,6 +18,11 @@ public class Result<T> {
 	
 	public Result(boolean success) {
 		this.success = success;
+	}
+	
+	public Result(boolean success, String msg) {
+		this.success = success;
+		this.msg = msg;
 	}
 	
 	public Result(T data) {
@@ -31,12 +38,21 @@ public class Result<T> {
 		this.success = success;
 	}
 
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
 	public T getData() {
 		return data;
 	}
 
-	public void setData(T data) {
+	public Result<T> setData(T data) {
 		this.data = data;
+		return this;
 	}
 	
 }

@@ -7,31 +7,16 @@
 			<ul class="app-menu-list">
 				<li class="app-menu-item"><a class="<#if _uri=='/app/order/index.jhtml'>color</#if>" href="${ctx}/app/order/index.jhtml" >最近的订单</a></li>
 				<li class="app-menu-item"><a class="<#if _uri=='/app/order/unpay.jhtml'>color</#if>" href="${ctx}/app/order/unpay.jhtml">未付款的订单</a></li>
-				<li class="app-menu-item"><a class="<#if _uri=='/app/order/unsend.jhtml'>color</#if>" href="${ctx}/app/order/unsend.jhtml">未发货的订单</a></li>
 				<li class="app-menu-item"><a class="<#if _uri=='/app/order/unrecv.jhtml'>color</#if>" href="${ctx}/app/order/unrecv.jhtml">未收货的订单</a></li>
 				<li class="app-menu-item"><a class="<#if _uri=='/app/order/all.jhtml'>color</#if>" href="${ctx}/app/order/all.jhtml">所有订单</a></li>
 			</ul>
 			</#if>
 		</li>
 		<li class="app-menu-item">
-			<a class="<#if _uri?starts_with('/app/wallet')>color</#if>" href="${ctx}/app/wallet"><#if _uri?starts_with('/app/wallet')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的钱包</a>
-			<#if _uri?starts_with('/app/wallet')>
-			<ul class="app-menu-list">
-				<li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="/app/wallet/chargeList?p=1">充值明细</a></li>
-                <li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="/app/wallet/consumeList?p=1">消费明细</a></li>
-                <li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="/app/wallet/withdraw">申请提现</a></li>
-                <li class="app-menu-item"><a class="<#if _uri=='/app/wallet/record.jhtml'>color</#if>" href="/app/wallet/withdrawList?p=1">提现列表</a></li>
-			</ul>
-			</#if>
+			<a class="<#if _uri?starts_with('/app/wallet')>color</#if>" href="${ctx}/app/wallet.jhtml"><#if _uri?starts_with('/app/wallet')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的钱包</a>
 		</li>
 		<li class="app-menu-item">
-			<a class="<#if _uri?starts_with('/app/overdraft')>color</#if>" href="${ctx}/app/overdraft"><#if _uri?starts_with('/app/overdraft')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的白条</a>
-			<#if _uri?starts_with('/app/overdraft')>
-			<ul class="app-menu-list">
-				<li class="app-menu-item"><a class="<#if _uri=='/app/overdraft/record.jhtml'>color</#if>" href="${ctx}/app/overdraft/billList?p=1">使用记录</a></li>
-                <li class="app-menu-item"><a class="<#if _uri=='/app/overdraft/record.jhtml'>color</#if>" href="${ctx}/app/overdraft/repaymentList?p=1">还款记录</a></li>
-			</ul>
-			</#if>
+			<a class="<#if _uri?starts_with('/app/overdraft')>color</#if>" href="${ctx}/app/overdraft.jhtml"><#if _uri?starts_with('/app/overdraft')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的白条</a>
 		</li>
 		<li class="app-menu-item">
 			<a class="<#if _uri?starts_with('/app/invoice')>color</#if>" href="${ctx}/app/invoice.jhtml"><#if _uri?starts_with('/app/invoice')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的发票</a>

@@ -56,6 +56,7 @@ public class IndexController {
 	@RequestMapping(Url.LOGOUT)
 	public String logout(HttpServletRequest request) {
 		request.getSession().removeAttribute(Session.USER);
+		request.getSession().removeAttribute(Session.SHOPCAR_COUNT);
 		return "redirect:"+Url.INDEX;
 	}
 	

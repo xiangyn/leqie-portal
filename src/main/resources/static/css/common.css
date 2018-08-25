@@ -91,6 +91,7 @@ a:focus { text-decoration: none; }
 
 *:focus { outline: none; } 
 button:focus, input:focus, textarea:focus { border-color: #0080ff!important; }
+button.disabled, button:disabled  { cursor: not-allowed; }
 
 .container { width: 1190px; height: 100%; margin: 0 auto; }
 
@@ -126,8 +127,8 @@ button:focus, input:focus, textarea:focus { border-color: #0080ff!important; }
 	height: 0;
 }
 .row > .col { height: 100%;  }
-.left { float: left; }
-.right { float: right; } 
+.left { float: left!important; }
+.right { float: right!important; } 
 .half { float: left; width: 50%!important; box-sizing: border-box; }
 .quarter { float: left; width: 25%!important; box-sizing: border-box; }
 .eighth { float: left; width: 12.5%!important; box-sizing: border-box; }
@@ -177,11 +178,12 @@ form .form-label.required:before { content: "*"; color: red; display: inline-blo
 .panel .panel-body .panel-content { padding: 15px; box-sizing: border-box; }
 
 .top { height: 32px; line-height: 32px;  border-bottom: 1px solid #dedeed; background-color: #f9f9f9; }
+.top .drop-down img { padding: 10px; width: 100px; height: 100px; }
 .top span, .top a { display: inline-block; padding: 0 7px;  }
 .top .drop-button span { padding: 0 3px;}
 .top a.color-hover { text-decoration: none; }
 .top ul > li { float: left; }
-.top .drop-down .drop-menu { width: 120px; }
+.top .drop-down .drop-menu { width: 120px; background-color: #fff; z-index: 2; }
 .top .shopcar span { padding: 0 1px; }
 
 .navbar { height: 80px; background: #fff; }
@@ -216,6 +218,16 @@ form .form-label.required:before { content: "*"; color: red; display: inline-blo
 .footer .footer-images img { width: 82px; height: 30px; margin: 0 4px; }
 .footer .footer-images .footer-copyright { display: inline-block; margin: 0 20px; position: relative; bottom: 16px; }
 
+
+.buy-product-list { margin : 2px auto 30px; }
+.buy-product-list .column { float: left; box-sizing: border-box; padding: 10px; }
+.buy-product-list .product-list .product-list-title { background: #dedeed; }
+.buy-product-list .product-list .product-list-title .column { margin: 0; }
+.buy-product-list .product-list li { border-bottom: 1px solid #dedeed; display: table; width: 100%; }
+.buy-product-list .product-list li .column { display: table-cell; vertical-align: middle; }
+.buy-product-list .product-list li p { color: #7D7D7D; }
+.buy-product-list .product-list li p.import { color: #4d4d4d; font-size: 15px; }
+
 .table {
     position: relative
 }
@@ -230,7 +242,7 @@ form .form-label.required:before { content: "*"; color: red; display: inline-blo
     width: 100%;
     background: #fff
 }
-
+.table tbody tr:hover { background: #F6F6F9; }
 .table table tr:first-child td {
     border-top-width: 0
 }

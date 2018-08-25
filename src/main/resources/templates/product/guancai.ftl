@@ -27,7 +27,7 @@
 						<div class="col half">
 							<input type="hidden" name="xinghaoName" value="${cates[0].name}" />
 							<input type="hidden" name="erjimulu" value="${cates[0].id}"/>
-							<ul class="order-menus clearfix" data-name="erjimulu">
+							<ul class="order-menus clearfix erjimulu" data-name="erjimulu">
 								<#list cates as cate>
 								<li data-value="${cate.id}" class="quarter menu-item text-center <#if cate_index==0>active</#if>">${cate.name}</li>
 								</#list> 
@@ -40,7 +40,7 @@
 						</div>
 						<div class="col half">
 							<div class="form-item">
-								<input class="number" type="text" name="chang" placeholder="请输入长度" required="required" />
+								<input class="number" type="text" name="hou" placeholder="请输入长度" required="required" />
 							</div>
 						</div>
 						<div class="col quarter">
@@ -52,8 +52,8 @@
 							<label class="form-label required">外径</label>
 						</div>
 						<div class="col half">
-							<div class="form-item">
-								<input class="number" type="text" name="waijing" placeholder="请输入外径" required="required" />
+							<div class="form-item waijing widget-sider">
+								<input class="number" type="text" name="chang" placeholder="请输入外径" required="required" readonly="readonly" />
 							</div>
 						</div>
 						<div class="col quarter">
@@ -65,8 +65,8 @@
 							<label class="form-label required">内径</label>
 						</div>
 						<div class="col half">
-							<div class="form-item">
-								<input class="number" type="text" name="neijing" placeholder="请输入内径" required="required" />
+							<div class="form-item neijing widget-sider">
+								<input class="number" type="text" name="kuang" placeholder="请输入内径" required="required" readonly="readonly" />
 							</div>
 						</div>
 						<div class="col quarter">
@@ -101,6 +101,7 @@
 								<button class="plus" type="button"><span class="fa fa-plus"></span></button>
 							</div>
 							<div class="order-button">
+								<button type="button" id="shopcar-button">加入购物车</button>
 								<button type="button" id="buy-button">购 买</button>
 							</div>
 						</div>
@@ -114,6 +115,7 @@
 <#include "/common/foot.ftl" />
 <script type="text/javascript" src="${ctx}/static/js/utils.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/iziToast.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/sider.jquery.min.js"></script>
 <script type="text/javascript">
 $(function() {
 	$(".product-content .row .form-item input").on("change", function() {
@@ -138,49 +140,58 @@ $(function() {
 		$(input).trigger("change");
 	});
 	
-	$(".form-content input[name='waijing']").on("change", function() {
-		var waijing = $(this).val();
-		if($.isNumeric(waijing)) {
-			$.ajax({
-				url: "${ctx}/app/product/getNeijing.jo",
-				type: 'post',
-				data: {
-					waijing: waijing,
-					xinghaoId: $("input[name='erjimulu']").val()
-				},
-				dataType: "json",
-				success: function(ret) {
-					
-				}
-			});
-		}
+	$("ul.erjimulu li").on("click", function() {
+		$("input[name='hou']").val("");
+		setTimeout(function() {
+			initSider();
+		}, 20);
 	});
 	
-	$(".form-content input[name='neijing']").on("change", function() {
-		var neijing = $(this).val();
-		if($.isNumeric(neijing)) {
-			$.ajax({
-				url: "${ctx}/app/product/getWaijing.jo",
-				type: 'post',
-				data: {
-					neijing: neijing,
-					xinghaoId: $("input[name='erjimulu']").val()
-				},
-				dataType: "json",
-				success: function(ret) {
-					
+	function initSider() {
+		$.fastAjax({
+			url: "${ctx}/app/product/getParams.jo",
+			data: {
+				zhonglei: $("input[name=zhonglei]").val(),
+				xinghaoId: $("ul.erjimulu li.active").data("value")
+			},
+			success: function(ret) {
+				if(ret.success) {
+					if(ret.data.neijings.length == 0 || ret.data.waijings.length == 0) {
+						$.info.error("获取内径外径失败，请联系管理员！");
+					}
+					$(".waijing.widget-sider").sider({
+						name: 'chang',
+						placeholder: '请选择外径',
+						quick: ret.data.waijings,
+						callback: function(_this, value, status) {
+							status && $(".form-content input[name='hou']").trigger("change");
+						}
+					});
+					$(".neijing.widget-sider").sider({
+						name: 'kuang',
+						placeholder: '请选择内径',
+						quick: ret.data.neijings,
+						callback: function(_this, value, status) {
+							status && $(".form-content input[name='hou']").trigger("change");
+						}
+					});
 				}
-			});
-		}
+			}
+		})
+	}
+	initSider();
+	
+	$(".product-order input.number").on("change", function() {
+		setTimeout(calculate, 10);
 	});
 	
 	var success = false;
-	$(".product-order input.number").on("change", function() {
-		var amount = $(this).val();
+	function calculate() {
+		var amount = $(".product-order input.number").val();
 		var chang = $("input[name='chang']").val();
-		var waijing = $("input[name='waijing']").val();
-		var neijing = $("input[name='neijing']").val();
-		if($.isNumeric(amount) && $.isNumeric(chang) && $.isNumeric(waijing) && $.isNumeric(neijing)) {
+		var kuang = $("input[name='kuang']").val();
+		var hou = $("input[name='hou']").val();
+		if($.isNumeric(amount) && $.isNumeric(chang) && $.isNumeric(kuang) && $.isNumeric(hou)) {
 			$.ajax({
 				url: "${ctx}/app/product/getMoney.jo",
 				type: 'post',
@@ -194,11 +205,7 @@ $(function() {
 				},
 				success: function(ret) {
 					if(!ret.success) {
-						iziToast.error({
-					        message: '获取价格失败!',
-					        position: 'topCenter',
-					        transitionIn: 'bounceInLeft',
-					    });
+						$.info.error("获取价格失败！");
 						$(".order-price-formula").text("-");
 						success = false;
 					}else if(ret.data.status == '0') {
@@ -217,13 +224,35 @@ $(function() {
 					}
 				}
 			});
+		}else {
+			$(".order-price-formula").text("*");
+			$(".order-price-value").text("¥ 0.00");
+			$("input[name='money']").val('0');
 		}
-	});
+	}
 	
 	$("#buy-button").on("click", function() {
 		if(success) {
 			$("input[name=xinghaoName]").val($(".erjimulu li.active").text());
 			$(".product-content form").submit();
+		}
+	});
+	
+	$("#shopcar-button").on("click", function() {
+		if(success) {
+			$("input[name=xinghaoName]").val($(".erjimulu li.active").text());
+			$.fastAjax({
+				url: "${ctx}/app/shoppingcar/add.jo",
+				data: $(".product-content form").serializeObject(),
+				success: function(ret) {
+					if(ret.success) {
+						$.info.success("已添加至购物车！");
+						$("#shopcar-count").text("("+($("#shopcar-count").data("value")*1+1)+")");
+					}else {
+						$.info.error("添加至购物车失败，请刷新后再试！");
+					}
+				}
+			});
 		}
 	});
 	

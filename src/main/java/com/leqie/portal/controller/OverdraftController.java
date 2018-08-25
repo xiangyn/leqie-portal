@@ -1,32 +1,35 @@
 package com.leqie.portal.controller;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.leqie.portal.constants.Session;
-import com.leqie.portal.model.User;
-import com.leqie.portal.remote.HttpHelper;
-import com.leqie.portal.utils.FileUploadUtil;
-import com.leqie.portal.utils.JsonUtils;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.message.BasicNameValuePair;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
+import static com.leqie.portal.remote.Api.SERVER_URL;
 
-import com.leqie.portal.constants.Template;
-import com.leqie.portal.constants.Url;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static com.leqie.portal.constants.Url.SERVER_URL;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.leqie.portal.constants.Session;
+import com.leqie.portal.constants.Template;
+import com.leqie.portal.constants.Url;
+import com.leqie.portal.model.User;
+import com.leqie.portal.utils.FileUploadUtil;
+import com.leqie.portal.utils.HttpHelper;
+import com.leqie.portal.utils.JsonUtils;
 
 @RestController
 @RequestMapping(Url.OVERDRAFT)

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 @Component
 @PropertySource("classpath:api.properties")
 public class Api {
+	
+	public static final String SERVER_URL = "http://118.31.35.233:8999/";
 
 	public String LOGIN = "/login";
 	
@@ -26,6 +28,8 @@ public class Api {
 	
 	public String PRODUCT_ZHENG_LIST = "/zhengbanList";
 	
+	public String PRODUCT_PARAMS = "/user/getByZhongleiAndXinghao";
+	
 	public String PRODUCT_ZHENG_LENGTH = "/getLengthByOthers";
 	
 	public String PRODUCT_XINGCAI_KUANDU = "/getKuanduByHoudu";
@@ -45,8 +49,22 @@ public class Api {
 	
 	public String ORDER_MONEY = "/user/getOrderMoney";
 	
+	public String ORDER_CANCEL = "/user/ordersRemove";
+	
+	public String ORDER_FINISH = "/user/confirmComplete";
+	
 	
 	public String SHOPCAR_INFO = "/user/countGouwucheByUser";
+	
+	public String SHOPCAR_LIST = "/user/getGouwucheByUser";
+	
+	public String SHOPCAR_ADD = "/user/saveToGouwuche";
+	
+	public String SHOPCAR_UPDATE = "/user/updateGouwuche";
+	
+	public String SHOPCAR_DELETE = "/user/deleteGouwuche";
+	
+	public String SHOPCAT_ORDER = "/user/saveFromGouwuche";
 	
 	
 	public String ADDRESS_LIST = "/user/getAddressById";

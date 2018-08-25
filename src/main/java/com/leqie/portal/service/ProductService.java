@@ -10,6 +10,7 @@ import com.leqie.portal.model.request.product.XingcaiHoudu;
 import com.leqie.portal.model.request.product.XingcaiKuandu;
 import com.leqie.portal.model.request.product.ZhengBanPage;
 import com.leqie.portal.model.request.product.Zhengzhi;
+import com.leqie.portal.model.response.ProductParamsResponse;
 
 public interface ProductService {
 
@@ -17,16 +18,18 @@ public interface ProductService {
 	
 	List<Cate> findCates();
 	
+	ProductParamsResponse getParams(String zhonglei, String xinghaoId); 
+	
 	List<ProductZheng> findZhengPage(ZhengBanPage request);
 	
-	List<Integer> getXingcaiHoudu(XingcaiKuandu request);
+	List<Float> getXingcaiHoudu(XingcaiKuandu request);
 	
-	List<Integer> getXingcaiKuandu(XingcaiHoudu request);
+	List<Float> getXingcaiKuandu(XingcaiHoudu request);
 	
-	List<Integer> getGuancaiNeijing(GuancaiWaijing request);
+	List<Float> getGuancaiNeijing(GuancaiWaijing request);
 	
-	List<Integer> getGuancaiWaijing(GuancaiNeijing request);
+	List<Float> getGuancaiWaijing(GuancaiNeijing request);
 	
-	List<Integer> getZhengzhi(Zhengzhi request);
+	List<Float> getZhengzhi(Zhengzhi request);
 	
 }

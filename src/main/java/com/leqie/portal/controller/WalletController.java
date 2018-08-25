@@ -1,22 +1,28 @@
 package com.leqie.portal.controller;
 
+import static com.leqie.portal.remote.Api.SERVER_URL;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.alibaba.fastjson.JSONObject;
 import com.leqie.portal.constants.Session;
 import com.leqie.portal.constants.Template;
 import com.leqie.portal.constants.Url;
 import com.leqie.portal.model.User;
-import com.leqie.portal.remote.HttpHelper;
+import com.leqie.portal.utils.HttpHelper;
 import com.leqie.portal.utils.JsonUtils;
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-
-import static com.leqie.portal.constants.Url.SERVER_URL;
 
 @RestController
 @RequestMapping(Url.WALLET)

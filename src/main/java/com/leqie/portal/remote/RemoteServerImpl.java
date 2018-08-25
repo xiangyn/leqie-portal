@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
@@ -19,7 +20,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -184,6 +184,11 @@ public class RemoteServerImpl implements RemoteServer {
         if (response.getStatusLine().getStatusCode() == 200) {
             // 返回响应体的内容
             return response.getEntity();
+        }else {
+        	logger.error("请求数据时出现异常，状态码:{}, 文本:{}", 
+        			response.getStatusLine().getStatusCode(),
+        			IOUtils.toString(response.getEntity().getContent(), "UTF-8"));
+        	
         }
         return null;
 	}

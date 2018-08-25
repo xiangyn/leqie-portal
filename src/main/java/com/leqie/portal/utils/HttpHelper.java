@@ -1,6 +1,15 @@
-package com.leqie.portal.remote;
+package com.leqie.portal.utils;
 
-import org.apache.http.*;
+import java.io.IOException;
+import java.nio.charset.CodingErrorAction;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.Consts;
+import org.apache.http.Header;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -17,11 +26,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.nio.charset.CodingErrorAction;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HttpHelper {
     private static Logger logger = LoggerFactory.getLogger(HttpHelper.class);
@@ -167,7 +171,6 @@ public class HttpHelper {
     public static String httpGet(String url) {
         String response = "";
         CloseableHttpResponse closeableResponse = null;
-        CloseableHttpClient client = getHttpClient();
         try {
             CloseableHttpClient httpclient = HttpClients.createDefault();
             HttpGet httpget = new HttpGet(url);

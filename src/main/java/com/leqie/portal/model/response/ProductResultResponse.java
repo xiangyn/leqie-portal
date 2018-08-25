@@ -4,13 +4,13 @@ import java.util.List;
 
 public class ProductResultResponse extends Response {
 
-	private List<Integer> result;
+	private List<Float> result;
 
-	public List<Integer> getResult() {
+	public List<Float> getResult() {
 		return result;
 	}
 
-	public void setResult(List<Integer> result) {
+	public void setResult(List<Float> result) {
 		this.result = result;
 	}
 	

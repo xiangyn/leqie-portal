@@ -3,37 +3,30 @@
 <head>
 	<#include "/common/head.ftl" />
 	<link href="${ctx}/static/css/font-awesome.min.css" rel="stylesheet">
+	<link href="${ctx}/static/css/iziToast.min.css" rel="stylesheet">
 	<link href="${ctx}/static/css/app.css" rel="stylesheet">
 	<title>乐切 - 官方网站</title>
 </head>
 <body>
 	<#include "/common/top.ftl" />
 	<#assign navbarSelectedMenu='center' />
-	<#assign logoInfo='我的订单' />
+	<#assign logoInfo='个人中心' />
 	<#include "/common/navbar.ftl" />
 	<div class="app">
 		<div class="container clearfix">
 			<#include "/common/app-menu.ftl" />
 			<div class="col-right orders-panel">
-				<div class="panel-content">
-					<#if data?size==0>
-						<p class="empty-info text-center">暂无订单记录！</p>
-					<#else/>
-					<ul class="orders-list">
-						
-					</ul>
-					</#if> 
+				<div class="bread-crumb">
+					<h3>我的订单</h3>
 				</div>
+				<#include "/order/orderList.ftl" />
 			</div>
 		</div>
 	</div>
 	<#include "/common/footer.ftl" />
 <#include "/common/foot.ftl" />
+<script type="text/javascript" src="${ctx}/static/js/iziToast.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/utils.js"></script>
-<script type="text/javascript">
-$(function() {
-	
-});
-</script>
+<#include "/order/order-js.ftl" />
 </body>
 </html>

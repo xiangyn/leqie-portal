@@ -17,23 +17,6 @@
 		<div class="container">
 			<h3 class="color">请选择一个收货地址：</h3>
 			<div class="address-list clearfix">
-				<!-- 
-				<div class="address-item active">
-					<div class="address-info unselect">
-						<p>地址一：</p>
-						<p>联系人：<span>wxy</span></p>
-						<p>联系方式：<span>18862191011</span></p>
-						<p>地址：<span>xxxxxxxxxxxxxxxxxxxxxx</span></p>
-					</div>
-				</div>
-				<div class="address-item">
-					<div class="address-info unselect">
-						<p>地址二：</p>
-						<p>联系人：<span>wxy</span></p>
-						<p>联系方式：<span>18862191011</span></p>
-						<p>地址：<span>xxxxxxxxxxxxxxxxxxxxxx</span></p>
-					</div>
-				</div> -->
 				<div class="address-more">
 					<button type="button" class="btn">显示更多 <span class="fa fa-plus"></button>
 					<!-- <button type="button" class="btn">添加地址 <span class="fa fa-plus"></button> -->
@@ -69,15 +52,27 @@
 							</#if>
 						</#if>
 						<#if model.hou?exists><p>厚度：${model.hou} mm</p></#if>
-						<#if model.waijing?exists><p>外径：${model.hou} mm</p></#if>
-						<#if model.neijing?exists><p>内径：${model.hou} mm</p></#if>
+						<#if model.waijing?exists><p>外径：${model.waijing} mm</p></#if>
+						<#if model.neijing?exists><p>内径：${model.neijing} mm</p></#if>
 					</span>
 					<span class="column type">${model.type!'-'}</span>
 					<span class="column amount">${model.amount}</span>
 					<span class="column money">${model.money}元</span>
 				</li>
 			</ul>
+			<form class="form">
 			<div class="product-order">
+				<input type="hidden" name="zhonglei" value="${model.zhonglei}" />
+				<input type="hidden" name="erjimulu" value="${model.erjimulu}" />
+				<input type="hidden" name="chang" value="${model.chang!}" />
+				<input type="hidden" name="kuang" value="${model.kuang!}" />
+				<input type="hidden" name="hou" value="${model.hou!}" />
+				<input type="hidden" name="waijing" value="${model.waijing!}" />
+				<input type="hidden" name="neijing" value="${model.neijing!}" />
+				<input type="hidden" name="type" value="${model.type!}" />
+				<input type="hidden" name="amount" value="${model.amount}" />
+				<input type="hidden" name="money" value="${model.money}" />
+				<input type="hidden" name="addressId" value="" />
 				<div class="row">
 					<div class="left order-price">
 						合计：<span class="value">¥ ${model.money}</span> 元
@@ -89,6 +84,7 @@
 					</div>
 				</div>
 			</div>
+			</form>
 		</div>
 	</div>
 	<#include "/common/footer.ftl" />
@@ -111,13 +107,17 @@ $(function() {
 					}else {
 						$(".address-list .empty-info").css("display", "none");
 						for(var i=0; i<ret.data.length; i++) {
-							$('<div class="address-item '+(ret.data[i].moren * 1 == 1 ? 'active': '')+'" data-id="'+ret.data[i].id+'">\
+							var active = ret.data[i].moren * 1 == 1 ? 'active' : '';
+							if(active) {
+								$("input[name=addressId]").val(ret.data[i].id);
+							}
+							$('<div class="address-item '+active+'" data-id="'+ret.data[i].id+'">\
 									<div class="address-info unselect">\
-									<p>联系人：<span>'+ret.data[i].name+'</span></p>\
+									<p>联系人：<span>'+ret.data[i].name+'</span>'+(active ? '(默认地址)': '')+'</p>\
 									<p>联系方式：<span>'+ret.data[i].phone+'</span></p>\
 									<p>地址：<span>'+ret.data[i].address+'</span></p>\
 								</div>\
-							</div>').appendTo($(".address-list"));
+							</div>').prependTo($(".address-list"));
 						}
 					}
 				}else {
@@ -133,10 +133,46 @@ $(function() {
 	
 	$(".address-list").on("click", ".address-item", function() {
 		$(".address-list .address-item").removeClass("active");
+		$("input[name=addressId]").val($(this).data("id"));
 		$(this).addClass("active");
 	});
 	
 	$(document).trigger("loadAddress");
+	
+	$("#buy-button").on("click", function() {
+		if(!$("input[name=addressId]").val()) {
+			iziToast.error({
+		        message: '请先选择一个地址!',
+		        position: 'topCenter',
+		        transitionIn: 'bounceInLeft',
+		    });
+			return;
+		}
+		$.ajax({
+			url: "${ctx}/app/order/save.jo",
+			type: 'POST',
+			data: $("form").serializeObject(),
+			dataType: 'json',
+			success: function(ret) {
+				if(ret.success) {
+					iziToast.success({
+				        message: '下单成功!',
+				        position: 'topCenter',
+				        transitionIn: 'bounceInLeft',
+				        onClose: function() {
+				        	window.location.href = "${ctx}/app/order/unpay.jhtml";
+				        }
+				    });
+				}else {
+					iziToast.error({
+				        message: ret.msg || '下单失败，请刷新后再试!',
+				        position: 'topCenter',
+				        transitionIn: 'bounceInLeft',
+				    });
+				}
+			}
+		});
+	});
 	
 });
 </script>

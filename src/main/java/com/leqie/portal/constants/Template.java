@@ -25,6 +25,8 @@ public class Template {
 	
 	public static final String ORDER_ALL = "order/all";
 	
+	public static final String ORDER_PAY = "order/pay";
+	
 	
 	public static final String ENTERPRISE = "enterprise/index";
 	

@@ -12,15 +12,23 @@ public class OrderSave {
 	
 	private String hou;
 	
+	private String waijing;
+	
+	private String neijing;
+	
 	private String type; // 快速 优切 整只 零切
 	
 	private String userId;
+	
+	private String amount;
 	
 	private String money;
 	
 	private String phone;
 	
 	private String addressId;
+	
+	private String gouwucheId;
 
 	public String getZhonglei() {
 		return zhonglei;
@@ -62,12 +70,36 @@ public class OrderSave {
 		this.hou = hou;
 	}
 
+	public String getWaijing() {
+		return waijing;
+	}
+
+	public void setWaijing(String waijing) {
+		this.waijing = waijing;
+	}
+
+	public String getNeijing() {
+		return neijing;
+	}
+
+	public void setNeijing(String neijing) {
+		this.neijing = neijing;
+	}
+
 	public String getType() {
 		return type;
 	}
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
 	}
 
 	public String getUserId() {
@@ -100,6 +132,14 @@ public class OrderSave {
 
 	public void setAddressId(String addressId) {
 		this.addressId = addressId;
+	}
+
+	public String getGouwucheId() {
+		return gouwucheId;
+	}
+
+	public void setGouwucheId(String gouwucheId) {
+		this.gouwucheId = gouwucheId;
 	}
 
 }

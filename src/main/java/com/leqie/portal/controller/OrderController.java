@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.leqie.portal.constants.Template;
@@ -39,6 +40,15 @@ public class OrderController {
 			HttpServletRequest request,
 			ModelAndView mv) {
 		mv.setViewName(Template.ORDER_BUY);
+		return mv;
+	}
+	
+	@RequestMapping(Url.ORDER_PAY)
+	public ModelAndView all(@RequestParam("no")String no, 
+			HttpServletRequest request,
+			ModelAndView mv) {
+		mv.addObject("data", service.getDetail(no));
+		mv.setViewName(Template.ORDER_PAY);
 		return mv;
 	}
 	

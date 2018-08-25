@@ -14,7 +14,7 @@ import com.leqie.portal.constants.RequestAttributes;
 import com.leqie.portal.constants.Session;
 import com.leqie.portal.controller.ShopCarInfo;
 import com.leqie.portal.model.User;
-import com.leqie.portal.service.ShopCarService;
+import com.leqie.portal.service.ShoppingCarService;
 import com.leqie.portal.utils.WebUtil;
 
 public class UserInterceptor implements HandlerInterceptor {
@@ -40,7 +40,7 @@ public class UserInterceptor implements HandlerInterceptor {
 	}
 	
 	@Autowired
-	private ShopCarService shopcarService;
+	private ShoppingCarService shopcarService;
 
 	@Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

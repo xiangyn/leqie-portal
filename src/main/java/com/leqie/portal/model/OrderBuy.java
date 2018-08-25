@@ -23,6 +23,10 @@ public class OrderBuy {
 	private int amount;
 	
 	private String money;
+	
+	private String addressId;
+	
+	private String phone;
 
 	public String getZhonglei() {
 		return zhonglei;
@@ -110,6 +114,22 @@ public class OrderBuy {
 
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+
+	public String getAddressId() {
+		return addressId;
+	}
+
+	public void setAddressId(String addressId) {
+		this.addressId = addressId;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 }

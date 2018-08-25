@@ -38,4 +38,42 @@ $(function() {
 	$("input.number").on("keyup", function() {
 		this.value=this.value.replace(/[^\d]/g,'');
 	});
-})
+});
+
+$.fastAjax = function(option) {
+	return $.ajax($.extend(true, {
+		type: 'post',
+		dataType: 'json',
+		error: function() {
+			if(iziToast) {
+				iziToast.error({
+			        message: '服务器繁忙，请稍后再试!',
+			        position: 'topCenter',
+			        transitionIn: 'bounceInLeft',
+			    });
+			}
+		}
+	}, option));
+}
+$.info = {
+	error: function(msg, callback) {
+		if(iziToast) {
+			iziToast.error({
+		        message: msg,
+		        position: 'topCenter',
+		        transitionIn: 'bounceInLeft',
+		        onClose: callback
+		    });
+		}
+	},
+	success: function(msg, callback) {
+		if(iziToast) {
+			iziToast.success({
+		        message: msg,
+		        position: 'topCenter',
+		        transitionIn: 'bounceInLeft',
+		        onClose: callback
+		    });
+		}
+	},
+}

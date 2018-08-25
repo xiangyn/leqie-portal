@@ -130,6 +130,7 @@
 									<button class="plus" type="button"><span class="fa fa-plus"></span></button>
 								</div>
 								<div class="order-button">
+									<button type="button" id="shopcar-button">加入购物车</button>
 									<button type="button" id="buy-button">购 买</button>
 								</div>
 							</div>
@@ -196,6 +197,24 @@ $(function() {
 	$("#buy-button").on("click", function() {
 		if(success) {
 			$(".product-content form").submit();
+		}
+	});
+	
+	$("#shopcar-button").on("click", function() {
+		if(success) {
+			$("input[name=xinghaoName]").val($(".erjimulu li.active").text());
+			$.fastAjax({
+				url: "${ctx}/app/shoppingcar/add.jo",
+				data: $(".product-content form").serializeObject(),
+				success: function(ret) {
+					if(ret.success) {
+						$.info.success("已添加至购物车！");
+						$("#shopcar-count").text("("+($("#shopcar-count").data("value")*1+1)+")");
+					}else {
+						$.info.error("添加至购物车失败，请刷新后再试！");
+					}
+				}
+			});
 		}
 	});
 	

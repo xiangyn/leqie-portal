@@ -27,7 +27,7 @@
 						<div class="col half">
 							<input type="hidden" name="xinghaoName" value="${cates[0].name}" />
 							<input type="hidden" name="erjimulu" value="${cates[0].id}"/>
-							<ul class="order-menus clearfix" data-name="erjimulu">
+							<ul class="order-menus clearfix erjimulu" data-name="erjimulu">
 								<#list cates as cate>
 								<li data-value="${cate.id}" class="quarter menu-item text-center <#if cate_index==0>active</#if>">${cate.name}</li>
 								</#list> 
@@ -52,8 +52,8 @@
 							<label class="form-label required">宽度</label>
 						</div>
 						<div class="col half">
-							<div class="form-item">
-								<input class="number" type="text" name="kuang" placeholder="请输入宽度" required="required" />
+							<div class="form-item widget-sider kuang">
+								<input class="number" type="text" name="kuang" placeholder="请输入宽度" required="required" readonly="readonly" />
 							</div>
 						</div>
 						<div class="col quarter">
@@ -65,8 +65,8 @@
 							<label class="form-label required">厚度</label>
 						</div>
 						<div class="col half">
-							<div class="form-item">
-								<input class="number" type="text" name="hou" placeholder="请输入厚度" required="required" />
+							<div class="form-item widget-sider hou">
+								<input class="number" type="text" name="hou" placeholder="请输入厚度" required="required" readonly="readonly" />
 							</div>
 						</div>
 						<div class="col quarter">
@@ -102,6 +102,7 @@
 								<button class="plus" type="button"><span class="fa fa-plus"></span></button>
 							</div>
 							<div class="order-button">
+								<button type="button" id="shopcar-button">加入购物车</button>
 								<button type="button" id="buy-button">购 买</button>
 							</div>
 						</div>
@@ -115,6 +116,7 @@
 <#include "/common/foot.ftl" />
 <script type="text/javascript" src="${ctx}/static/js/utils.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/iziToast.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/sider.jquery.min.js"></script>
 <script type="text/javascript">
 $(function() {
 	$(".product-content .row .form-item input").on("change", function() {
@@ -139,45 +141,54 @@ $(function() {
 		$(input).trigger("change");
 	});
 	
-	$(".form-content input[name='kuang']").on("change", function() {
-		var kuang = $(this).val();
-		if($.isNumeric(kuang)) {
-			$.ajax({
-				url: "${ctx}/app/product/getHoudu.jo",
-				type: 'post',
-				data: {
-					kuandu: kuang,
-					xinghaoId: $("input[name='erjimulu']").val()
-				},
-				dataType: "json",
-				success: function(ret) {
-					
-				}
-			});
-		}
+	$("ul.erjimulu li").on("click", function() {
+		$("input[name='hou']").val("");
+		setTimeout(function() {
+			initSider();
+		}, 20);
 	});
 	
-	$(".form-content input[name='hou']").on("change", function() {
-		var hou = $(this).val();
-		if($.isNumeric(hou)) {
-			$.ajax({
-				url: "${ctx}/app/product/getKuandu.jo",
-				type: 'post',
-				data: {
-					houdu: hou,
-					xinghaoId: $("input[name='erjimulu']").val()
-				},
-				dataType: "json",
-				success: function(ret) {
-					
+	function initSider() {
+		$.fastAjax({
+			url: "${ctx}/app/product/getParams.jo",
+			data: {
+				zhonglei: $("input[name=zhonglei]").val(),
+				xinghaoId: $("ul.erjimulu li.active").data("value")
+			},
+			success: function(ret) {
+				if(ret.success) {
+					if(ret.data.houdus.length == 0 || ret.data.kuangdus.length == 0) {
+						$.info.error("获取宽度或厚度失败，请联系管理员！");
+					}
+					$(".hou.widget-sider").sider({
+						name: 'hou',
+						placeholder: '请选择厚度',
+						quick: ret.data.houdus,
+						callback: function(_this, value, status) {
+							status && $(".form-content input[name='chang']").trigger("change");
+						}
+					});
+					$(".kuang.widget-sider").sider({
+						name: 'kuang',
+						placeholder: '请选择宽度',
+						quick: ret.data.kuangdus,
+						callback: function(_this, value, status) {
+							status && $(".form-content input[name='chang']").trigger("change");
+						}
+					});
 				}
-			});
-		}
+			}
+		})
+	}
+	initSider();
+	
+	$(".product-order input.number").on("change", function() {
+		setTimeout(calculate, 10);
 	});
 	
 	var success = false;
-	$(".product-order input.number").on("change", function() {
-		var amount = $(this).val();
+	function calculate() {
+		var amount = $(".product-order input.number").val();
 		var chang = $("input[name='chang']").val();
 		var kuang = $("input[name='kuang']").val();
 		var hou = $("input[name='hou']").val();
@@ -218,13 +229,35 @@ $(function() {
 					}
 				}
 			});
+		}else {
+			$(".order-price-formula").text("*");
+			$(".order-price-value").text("¥ 0.00");
+			$("input[name='money']").val('0');
 		}
-	});
+	}
 	
 	$("#buy-button").on("click", function() {
 		if(success) {
 			$("input[name=xinghaoName]").val($(".erjimulu li.active").text());
 			$(".product-content form").submit();
+		}
+	});
+	
+	$("#shopcar-button").on("click", function() {
+		if(success) {
+			$("input[name=xinghaoName]").val($(".erjimulu li.active").text());
+			$.fastAjax({
+				url: "${ctx}/app/shoppingcar/add.jo",
+				data: $(".product-content form").serializeObject(),
+				success: function(ret) {
+					if(ret.success) {
+						$.info.success("已添加至购物车！");
+						$("#shopcar-count").text("("+($("#shopcar-count").data("value")*1+1)+")");
+					}else {
+						$.info.error("添加至购物车失败，请刷新后再试！");
+					}
+				}
+			});
 		}
 	});
 	

@@ -1,5 +1,10 @@
 package com.leqie.portal.utils;
 
+import static com.leqie.portal.utils.HttpHelper.getHttpClient;
+
+import java.io.File;
+import java.io.IOException;
+
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.mime.MultipartEntity;
@@ -9,13 +14,10 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.IOException;
 
-import static com.leqie.portal.remote.HttpHelper.getHttpClient;
-
-
+@SuppressWarnings("deprecation")
 public class FileUploadUtil {
+	
     private static Logger logger = LoggerFactory.getLogger(FileUploadUtil.class);
 
     public static String singleSubmitPost(String url, File file) {
