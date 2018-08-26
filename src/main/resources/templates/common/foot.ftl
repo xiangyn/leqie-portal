@@ -1,1 +1,0 @@
-<script type="text/javascript" src="${ctx}/static/js/jquery-1.10.1.min.js"></script>

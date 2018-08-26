@@ -24,18 +24,19 @@
 	<div class="app">
 		<div class="container clearfix">
 			<#include "/common/app-menu.ftl" />
-			<div class="col-right" style="float:left;width:70%;padding:2%;overflow:hidden;">
-                <li style="text-align:center">
-                    <h>这是钱包右边的区域</h>
-                </li>
-                <ul style="list-style: none;display: block;overflow: hidden;width:100%;margin-top:20px;">
-                    <li class="li1"><a href="/app/wallet">当前余额</a></li>
-                    <li class="li1"><a href="/app/wallet/chargeList?p=1">充值明细</a></li>
-                    <li class="li1"><a href="/app/wallet/consumeList?p=1">消费明细</a></li>
-                    <li class="li1"><a href="/app/wallet/withdraw">申请提现</a></li>
-                    <li class="li1"><a href="/app/wallet/withdrawList?p=1">提现列表</a></li>
-
-                </ul>
+			<div class="col-right orders-panel">
+				<div class="bread-crumb">
+					<h3>我的钱包</h3>
+				</div>
+				<div class="panel-title">
+					<ul class="order-menus">
+						<li class="order-menu-item <#if tip?? && 'userMoney'==tip>active</#if>"><a href="${ctx}/app/wallet">当前余额</a></li>
+						<li class="order-menu-item <#if tip?? && 'chargeList'==tip>active</#if>"><a href="${ctx}/app/wallet/chargeList?p=1">充值明细</a></li>
+						<li class="order-menu-item <#if tip?? && 'consumeList'==tip>active</#if>"><a href="${ctx}/app/wallet/consumeList?p=1">消费明细</a></li>
+						<li class="order-menu-item <#if tip?? && 'withdraw'==tip>active</#if>"><a href="${ctx}/app/wallet/withdraw">申请提现</a></li>
+						<li class="order-menu-item <#if tip?? && 'withdrawList'==tip>active</#if>"><a href="${ctx}/app/wallet/withdrawList?p=1">提现列表</a></li>
+					</ul>
+				</div>
 				<#if tip?? && "userMoney"==tip ><#include "wallet_userMoney.ftl" /></#if>
                 <#if tip?? && "chargeList"==tip ><#include "wallet_chargeList.ftl" /></#if>
                 <#if tip?? && "consumeList"==tip ><#include "wallet_consumeList.ftl" /></#if>

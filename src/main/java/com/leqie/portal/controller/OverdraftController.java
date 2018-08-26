@@ -50,7 +50,7 @@ public class OverdraftController {
 		String json = HttpHelper.httpGet(url);
 		JSONObject result = JsonUtils.parse(json, JSONObject.class);
 		if (Integer.parseInt(result.get("status").toString()) == 1) {
-			if(result.get("result") != null && ((List) result.get("result")).size() ==0){
+			if(result.get("result") != null && ((List<?>) result.get("result")).size() ==0){
 				map.put("tip", "applyOverdraft");
 			}else {
 				JSONObject list = (JSONObject)(((JSONArray) JSONArray.parse(JsonUtils.stringify(result.get("result")))).get(0));
@@ -163,7 +163,7 @@ public class OverdraftController {
 		JSONObject result = JsonUtils.parse(json, JSONObject.class);
 		if (Integer.parseInt(result.get("status").toString()) == 1) {
 			map.put("tip", "billList");
-			map.put("billList", (List) result.get("result"));
+			map.put("billList", (List<?>) result.get("result"));
 			map.put("page", Integer.parseInt(page));
 			map.put("totalRecords", result.get("count"));
 		}
@@ -188,7 +188,7 @@ public class OverdraftController {
 		JSONObject result = JsonUtils.parse(json, JSONObject.class);
 		if (Integer.parseInt(result.get("status").toString()) == 1) {
 			map.put("tip", "repaymentList");
-			map.put("repaymentList", (List) result.get("result"));
+			map.put("repaymentList", (List<?>) result.get("result"));
 			map.put("page", Integer.parseInt(page));
 			map.put("totalRecords", result.get("count"));
 		}

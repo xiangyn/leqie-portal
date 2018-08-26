@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.leqie.portal.constants.OrderStatus;
 import com.leqie.portal.constants.Template;
 import com.leqie.portal.constants.Url;
 import com.leqie.portal.model.OrderBuy;
@@ -18,14 +19,6 @@ import com.leqie.portal.utils.WebUtil;
 
 @Controller
 public class OrderController {
-	
-	private static final String ALL = null;
-	
-	private static final String UNPAY = "0";
-	
-	private static final String UNRECV = "1";
-	
-	private static final String FINISHED = "2";
 	
 	@Autowired
 	private OrderService service;
@@ -57,7 +50,7 @@ public class OrderController {
 			HttpServletRequest request,
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
-		search.setType(ALL);
+		search.setType(null);
 		mv.addObject("data", service.findOrder(search));
 		mv.setViewName(Template.ORDER_INDEX);
 		return mv;
@@ -68,7 +61,7 @@ public class OrderController {
 			HttpServletRequest request,
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
-		search.setType(UNPAY);
+		search.setType(OrderStatus.UNPAY);
 		mv.addObject("data", service.findOrder(search));
 		mv.setViewName(Template.ORDER_UNPAY);
 		return mv;
@@ -79,7 +72,7 @@ public class OrderController {
 			HttpServletRequest request,
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
-		search.setType(UNRECV);
+		search.setType(OrderStatus.UNRECV);
 		mv.addObject("data", service.findOrder(search));
 		mv.setViewName(Template.ORDER_UNRECV);
 		return mv;
@@ -90,9 +83,9 @@ public class OrderController {
 			HttpServletRequest request,
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
-		search.setType(FINISHED);
+		search.setType(OrderStatus.FINISHED);
 		mv.addObject("data", service.findOrder(search));
-		mv.setViewName(Template.ORDER_UNRECV);
+		mv.setViewName(Template.ORDER_FINISHED);
 		return mv;
 	}
 	
@@ -101,7 +94,7 @@ public class OrderController {
 			HttpServletRequest request,
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
-		search.setType(ALL);
+		search.setType(null);
 		mv.addObject("data", service.findOrder(search));
 		mv.setViewName(Template.ORDER_ALL);
 		return mv;

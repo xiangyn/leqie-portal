@@ -23,6 +23,8 @@ public class Template {
 	
 	public static final String ORDER_UNRECV = "order/unrecv";
 	
+	public static final String ORDER_FINISHED = "order/finished";
+	
 	public static final String ORDER_ALL = "order/all";
 	
 	public static final String ORDER_PAY = "order/pay";
@@ -35,9 +37,13 @@ public class Template {
 	
 	public static final String INVOICE_INDEX = "invoice/index";
 	
-	public static final String INVOICE_WILL = "invoice/index/will";
+	public static final String INVOICE_WILL = "invoice/will";
 	
-	public static final String INVOICE_OPEN = "invoice/index/open";
+	public static final String INVOICE_OPEN = "invoice/open";
+	
+	public static final String INVOICE_NEW = "invoice/new";
+	
+	public static final String INVOICE_UPDATE = "invoice/update";
 	
 	
 	public static final String OVERDRAFT_INDEX = "overdraft/index";
@@ -55,6 +61,8 @@ public class Template {
 	
 	
 	public static final String USER_INDEX = "user/index";
+	
+	public static final String USER_UPDATE = "user/update";
 	
 	public static final String USER_UPDATE_PWD = "user/updatePwd";
 	

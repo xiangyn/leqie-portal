@@ -57,7 +57,7 @@ public class WalletController {
         JSONObject result = JsonUtils.parse(json, JSONObject.class);
         if (Integer.parseInt(result.get("status").toString()) == 1) {
             map.put("tip", "chargeList");
-            map.put("chargeList", (List) result.get("result"));
+            map.put("chargeList", (List<?>) result.get("result"));
             map.put("page", Integer.parseInt(page));
             map.put("totalRecords", result.get("count"));
         }
@@ -75,7 +75,7 @@ public class WalletController {
         JSONObject result = JsonUtils.parse(json, JSONObject.class);
         if (Integer.parseInt(result.get("status").toString()) == 1) {
             map.put("tip", "consumeList");
-            map.put("consumeList", (List) result.get("result"));
+            map.put("consumeList", (List<?>) result.get("result"));
             map.put("page", Integer.parseInt(page));
             map.put("totalRecords", result.get("count"));
         }
@@ -123,7 +123,7 @@ public class WalletController {
         JSONObject result = JsonUtils.parse(json, JSONObject.class);
         if (Integer.parseInt(result.get("status").toString()) == 1) {
             map.put("tip", "withdrawList");
-            map.put("withdrawList", (List) result.get("list"));
+            map.put("withdrawList", (List<?>) result.get("list"));
             map.put("page", Integer.parseInt(page));
             map.put("totalRecords", result.get("count"));
         }

@@ -34,9 +34,9 @@ public class Url {
 	
 	public static final String ORDER_INDEX = "/app/order/index" + PAGE_SUFFIX;
 	
-	public static final String ORDER_BUY = "/app/order/buy" + PAGE_SUFFIX;
-	
 	public static final String ORDER_PAY = "/app/order/pay" + PAGE_SUFFIX;
+	
+	public static final String ORDER_BUY = "/app/order/buy" + PAGE_SUFFIX;
 	
 	public static final String ORDER_UNPAY = "/app/order/unpay" + PAGE_SUFFIX;
 	
@@ -48,6 +48,10 @@ public class Url {
 	
 	public static final String ORDER_ALL = "/app/order/all" + PAGE_SUFFIX;
 	
+	public static final String ORDER_CANCEL = "/app/order/cancel" + AJAX_SUFFIX;
+	
+	public static final String ORDER_FINISH = "/app/order/finish" + AJAX_SUFFIX;
+	
 	
 	public static final String ENTERPRISE = "/app/enterprise" + PAGE_SUFFIX;
 	
@@ -56,12 +60,16 @@ public class Url {
 	
 	public static final String INVOICE = "/app/invoice" + PAGE_SUFFIX;
 	
+	public static final String INVOICE_NEW = "/app/invoice/new" + PAGE_SUFFIX;
+	
+	public static final String INVOICE_UPDATE = "/app/invoice/update" + PAGE_SUFFIX;
+	
 	public static final String INVOICE_WILL = "/app/invoice/will" + PAGE_SUFFIX;
 	
 	public static final String INVOICE_OPEN = "/app/invoice/open" + PAGE_SUFFIX;
 	
 	
-	public static final String OVERDRAFT = "/app/overdraft";
+	public static final String OVERDRAFT = "/app/overdraft" + PAGE_SUFFIX;
 	
 	public static final String OVERDRAFT_APPLY = "/app/overdraft/apply" + PAGE_SUFFIX;
 	
@@ -76,6 +84,8 @@ public class Url {
 	
 	
 	public static final String USER = "/app/user" + PAGE_SUFFIX;
+	
+	public static final String USER_UPDATE = "/app/user/update" + PAGE_SUFFIX;
 	
 	public static final String USER_UPDATE_PWD = "/app/user/updatePwd" + PAGE_SUFFIX;
 	

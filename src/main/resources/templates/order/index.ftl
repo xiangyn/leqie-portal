@@ -24,6 +24,7 @@
 						<li class="order-menu-item active"><a href="${ctx}/app/order/index.jhtml">最近</a></li>
 						<li class="order-menu-item"><a href="${ctx}/app/order/unpay.jhtml">未付款</a></li>
 						<li class="order-menu-item"><a href="${ctx}/app/order/unrecv.jhtml">未收货</a></li>
+						<li class="order-menu-item"><a href="${ctx}/app/order/finished.jhtml">已完成</a></li>
 						<li class="order-menu-item right"><a href="${ctx}/app/order/all.jhtml">更多</a></li>
 					</ul>
 				</div>

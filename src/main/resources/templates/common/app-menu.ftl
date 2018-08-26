@@ -8,6 +8,7 @@
 				<li class="app-menu-item"><a class="<#if _uri=='/app/order/index.jhtml'>color</#if>" href="${ctx}/app/order/index.jhtml" >最近的订单</a></li>
 				<li class="app-menu-item"><a class="<#if _uri=='/app/order/unpay.jhtml'>color</#if>" href="${ctx}/app/order/unpay.jhtml">未付款的订单</a></li>
 				<li class="app-menu-item"><a class="<#if _uri=='/app/order/unrecv.jhtml'>color</#if>" href="${ctx}/app/order/unrecv.jhtml">未收货的订单</a></li>
+				<li class="app-menu-item"><a class="<#if _uri=='/app/order/finished.jhtml'>color</#if>" href="${ctx}/app/order/finished.jhtml">已完成的订单</a></li>
 				<li class="app-menu-item"><a class="<#if _uri=='/app/order/all.jhtml'>color</#if>" href="${ctx}/app/order/all.jhtml">所有订单</a></li>
 			</ul>
 			</#if>
@@ -21,10 +22,10 @@
 		<li class="app-menu-item">
 			<a class="<#if _uri?starts_with('/app/invoice')>color</#if>" href="${ctx}/app/invoice.jhtml"><#if _uri?starts_with('/app/invoice')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 我的发票</a>
 			<#if _uri?starts_with('/app/invoice')>
-			<ul class="app-menu-list">
+			<!-- <ul class="app-menu-list">
 				<li class="app-menu-item"><a class="<#if _uri=='/app/invoice/will.jhtml'>color</#if>" href="${ctx}/app/invoice/will.jhtml">可开发票</a></li>
 				<li class="app-menu-item"><a class="<#if _uri=='/app/invoice/open.jhtml'>color</#if>" href="${ctx}/app/invoice/open.jhtml">已开发票</a></li>
-			</ul>
+			</ul> -->
 			</#if>
 		</li>
 		<li class="app-menu-item">

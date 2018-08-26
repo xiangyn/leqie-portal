@@ -21,6 +21,10 @@ public class Api {
 	
 	public String PRICE_PAGE_LIST = "/pricePageList";
 	
+	public String UPDATE_INFO = "/user/updateUser";
+	
+	public String CHANGE_PWD = "/user/changePassword";
+	
 	
 	public String PRODUCT_CATE_LIST = "/cateList";
 	
@@ -74,4 +78,18 @@ public class Api {
 	public String ADDRESS_EDIT = "/user/updateAddress";
 	
 	public String ADDRESS_DEL = "/user/deleteAddress";
+	
+	
+	public String INVOICE_INFO = "/user/getFapiaoByUser";
+	
+	public String INVOICE_NEW = "/user/saveFapiao";
+	
+	public String INVOICE_EDIT = "/user/updateFapiao";
+	
+	public String INVOICE_DELETE = "/user/deleteFapiao";
+	
+	public String INVOICE_RECORD = "/user/getkaipiaoByUser";
+	
+	public String INVOICE_APPLY = "/user/saveKaipiao";
+	
 }
