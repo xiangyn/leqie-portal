@@ -25,6 +25,14 @@ public class Api {
 	
 	public String CHANGE_PWD = "/user/changePassword";
 	
+	public String USER_UPLOAD = "/user/upload";
+	
+	public String ENTERPRISE_AUTH = "/user/getRenzhengByUser";
+	
+	public String ENTERPRISE_SAVE_AUTH = "/user/saveRenzheng";
+	
+	public String ENTERPRISE_UPDATE_AUTH = "/user/updateRenzheng";
+	
 	
 	public String PRODUCT_CATE_LIST = "/cateList";
 	

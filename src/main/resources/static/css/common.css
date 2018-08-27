@@ -151,6 +151,7 @@ a.btn { text-decoration: none; }
 .btn-block { width: 100%; padding: 8px 0; }
 form .form-item { display: block; }
 form .form-item input { border: 1px solid #dedeed; padding: 5px; width: 100%; height: 42px; box-sizing: border-box; }
+form .form-item textarea { border: 1px solid #dedeed; padding: 8px; width: 100%; height: 100px; box-sizing: border-box; resize: none; }
 form .form-item button, form .form-item .btn { border: 0; border-radius: 4px; background: #0080ff; font-size: 15px; color: #fff; padding: 10px 12px; cursor: pointer; }
 form .form-item.form-icon-item { position: relative; }
 form .form-item.form-icon-item .form-icon { width: 14px; margin: 14px 10px; font-size: inherit; position: absolute; }
@@ -588,6 +589,21 @@ form .form-label.required:before { content: "*"; color: red; display: inline-blo
     width: 12px;
     font-size: 12px;
     line-height: inherit
+}
+
+.form-item.dropzone {
+	border: 2px dashed #0087F7;
+	border-radius: 5px;
+	background: white;
+}
+.dropzone .dz-message {
+	font-weight: 400;
+}
+.dropzone .dz-message .note {
+	font-size: 0.8em;
+	font-weight: 200;
+	display: block;
+	margin-top: 1.4rem;
 }
 
 DIV.digg {  

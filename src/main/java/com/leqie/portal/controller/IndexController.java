@@ -76,7 +76,9 @@ public class IndexController {
 	@RequestMapping("/u.jhtml")
 	public void url(@RequestParam("u")String url, 
 			HttpServletRequest request, HttpServletResponse response) throws IOException {
-		server.request(url, response.getOutputStream());
+		if(url.endsWith(".jpg") || url.endsWith(".png") || url.endsWith(".gif")) {
+			server.request(url, response.getOutputStream());
+		}
 	}
 	
 }

@@ -46,15 +46,22 @@ $.fastAjax = function(option) {
 		dataType: 'json',
 		error: function() {
 			if(iziToast) {
-				iziToast.error({
-			        message: '服务器繁忙，请稍后再试!',
-			        position: 'topCenter',
-			        transitionIn: 'bounceInLeft',
-			    });
+				$.info.error('服务器繁忙，请稍后再试!');
 			}
 		}
 	}, option));
 }
+$.fastUpload = function(option) {
+	$.ajaxFileUpload($.extend(true, {
+		dataType: 'json',
+		error: function() {
+			if(iziToast) {
+				$.info.error('服务器繁忙，请稍后再试!');
+			}
+		}
+	}, option));
+}
+
 $.info = {
 	error: function(msg, callback) {
 		if(iziToast) {

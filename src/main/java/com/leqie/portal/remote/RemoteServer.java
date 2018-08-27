@@ -1,8 +1,8 @@
 package com.leqie.portal.remote;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.List;
 import java.util.Map;
 
 public interface RemoteServer {
@@ -16,7 +16,6 @@ public interface RemoteServer {
 	<T> T request(String path, Map<String, Object> requestParam, Method method,
 			Class<T> responseType) throws IOException;
 	
-	<T> List<T> requestList(String path, Map<String, Object> requestParam, Method method,
-			Class<T> responseType) throws IOException;
+	<T> T uploadFile(String path, String name, File file, Class<T> responseType);
 	
 }

@@ -67,14 +67,16 @@ public class UserInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		request.setAttribute(RequestAttributes.CURRENT_URI_ATTR_NAME, request.getRequestURI());
-		Integer shopCarCount = (Integer)request.getSession().getAttribute(Session.SHOPCAR_COUNT);
-		if(shopCarCount == null) {
-			User user = (User) request.getSession().getAttribute(Session.USER);
-			ShopCarInfo info = shopcarService.getShopCarInfo(user.getNo());
-			if(info != null) {
-				shopCarCount = Integer.parseInt(info.getCount());
-				request.getSession().setAttribute(Session.SHOPCAR_COUNT, shopCarCount);
+		User user = WebUtil.getUser(request);
+		if(user != null) {
+			request.setAttribute(RequestAttributes.CURRENT_URI_ATTR_NAME, request.getRequestURI());
+			Integer shopCarCount = (Integer)request.getSession().getAttribute(Session.SHOPCAR_COUNT);
+			if(shopCarCount == null) {
+				ShopCarInfo info = shopcarService.getShopCarInfo(user.getNo());
+				if(info != null) {
+					shopCarCount = Integer.parseInt(info.getCount());
+					request.getSession().setAttribute(Session.SHOPCAR_COUNT, shopCarCount);
+				}
 			}
 		}
 	}

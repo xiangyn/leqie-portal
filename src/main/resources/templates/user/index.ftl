@@ -33,11 +33,9 @@
 						</div>
 					</div>
 				</div>
-				<!-- 
 				<div class="security-panel">
 					
 				</div>
-				 -->
 			</div>
 		</div>
 	</div>

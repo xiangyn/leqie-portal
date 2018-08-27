@@ -1,5 +1,6 @@
 package com.leqie.portal.remote;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
@@ -18,6 +19,8 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.slf4j.Logger;
@@ -29,7 +32,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -95,22 +97,41 @@ public class RemoteServerImpl implements RemoteServer {
 		return null;
 	}
 	
-	public <T> List<T> requestList(String path, Map<String, Object> requestParams, Method method, Class<T> responseType) throws IOException {
+	@Override
+	public <T> T uploadFile(String path, String name, File file, Class<T> responseType) {
 		try {
 			String url = generateUrl(path);
-			if(method == RemoteServer.Method.GET) {
-				return jsonList(doGet(url, requestParams), responseType);
-			}else if(method == RemoteServer.Method.POST) {
-				return jsonList(doPost(url, requestParams), responseType);
-			}
+			
+			// 声明 http get 请求
+	        HttpPost httpPost = new HttpPost(url);
+	        // 装载配置信息
+	        httpPost.setConfig(config);
+	        HttpEntity entity = 
+					MultipartEntityBuilder.create()
+						.addPart(name, new FileBody(file))
+						.build();
+	        httpPost.setEntity(entity);
+	        // 发起请求
+	        CloseableHttpResponse response = this.httpClient.execute(httpPost);
+
+	        // 判断状态码是否为200
+	        if (response.getStatusLine().getStatusCode() == 200) {
+	            // 返回响应体的内容
+	            return json(response.getEntity(), responseType);
+	        }else {
+	        	logger.error("请求数据时出现异常，状态码:{}, 文本:{}", 
+	        			response.getStatusLine().getStatusCode(),
+	        			IOUtils.toString(response.getEntity().getContent(), "UTF-8"));
+	        	
+	        }
 		}catch (MalformedURLException e) {
 			logger.error("远程请求时，创建url失败！");
-			throw e;
 		}catch (JsonParseException | JsonMappingException e) {
 			logger.error("解析响应结果失败！");
-			throw e;
+		}catch (IOException e) {
+			logger.error("请求失败！{}", e.getMessage());
 		}
-		return new ArrayList<T>();
+		return null;
 	}
 
 	protected String generateUrl(String path) throws MalformedURLException {
@@ -200,6 +221,7 @@ public class RemoteServerImpl implements RemoteServer {
 		return objectMapper.readValue(entity.getContent(), responseType);
 	}
 	
+	/*
 	private <T> List<T> jsonList(HttpEntity entity, Class<T> responseType) throws IOException {
 		if(entity == null) {
 			return new ArrayList<T>();
@@ -208,5 +230,5 @@ public class RemoteServerImpl implements RemoteServer {
 				.constructParametricType(List.class, responseType);
 		return objectMapper.readValue(entity.getContent(), javaType);
 	}
-	
+	*/
 }

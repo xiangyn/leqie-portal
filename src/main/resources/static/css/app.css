@@ -40,10 +40,14 @@
 .app .orders-panel .buy-product-list .table { margin: 15px auto; }
 .app .orders-panel .buy-product-list .table a { text-decoration: none; color: #0080ff; }
 
-.app .col-right.address .t-change, .app .col-right.address .t-delete, .app .col-right.address .t-default {
+.app .address .form-content { margin: 20px auto; }
+.app .address .t-change, .app .col-right.address .t-delete, .app .col-right.address .t-default {
 	color: #0080ff; text-decoration: none;
 }
-.app .col-right.address .t-change, .app .col-right.address .t-delete { cursor: pointer; }
+.app .address .t-change, .app .col-right.address .t-delete { cursor: pointer; }
+.app .address .dropzone { padding: 0;  }
+.app .address .dropzone .dz-message { margin: 5em 0 0; }
+.app .enterprise-panel .empty-info { line-height: 240px; }
 
 .app .user-manage .user-panel { background: #F6F6F6; padding: 5px 20px 30px; }
 .app .user-manage .user-panel .panel-title { margin: 10px 0 15px; }
