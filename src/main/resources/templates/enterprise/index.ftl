@@ -20,9 +20,9 @@
 				</div>
 				<#if data?exists>
 					<#if data.shenhezhuangtai == '审核中'>
-						<p class="empty-info text-center" style="color:red">你提交的认证正在等待审核！</p>
+						<#include "/enterprise/info.ftl"/>
 					<#elseif data.shenhezhuangtai == '审核通过'>
-						<p class="empty-info text-center" style="color:red">你提交的认证已审核通过！<a class="color" href="${ctx}/app/enterprise/auth.jhtml" >点击此处修改认证信息</a></p>
+						<#include "/enterprise/info.ftl"/>
 					<#elseif data.shenhezhuangtai == '审核拒绝'>
 						<p class="empty-info text-center" style="color:red">你提交的认证审核失败！<a class="color" href="${ctx}/app/enterprise/auth.jhtml" >点击此处重新申请认证</a></p>
 					</#if>

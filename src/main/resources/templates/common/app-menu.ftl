@@ -43,7 +43,7 @@
 			<a class="<#if _uri?starts_with('/app/user')>color</#if>" href="${ctx}/app/user.jhtml"><#if _uri?starts_with('/app/user')><span class="fa fa-minus-square-o"></span><#else/><span class="fa fa-plus-square-o"></span></#if> 账户管理</a>
 			<#if _uri?starts_with('/app/user')>
 			<ul class="app-menu-list">
-				<li class="app-menu-item"><a class="<#if _uri=='/app/user/updatePwd. jhtml'>color</#if>" href="${ctx}/app/user/updatePwd.jhtml">修改密码</a></li>
+				<li class="app-menu-item"><a class="<#if _uri=='/app/user/updatePwd.jhtml'>color</#if>" href="${ctx}/app/user/updatePwd.jhtml">修改密码</a></li>
 			</ul>
 			</#if>
 		</li>

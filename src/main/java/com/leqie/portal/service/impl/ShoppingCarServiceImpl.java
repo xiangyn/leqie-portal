@@ -69,9 +69,7 @@ public class ShoppingCarServiceImpl extends AbstarctService implements ShoppingC
 
 	@Override
 	public Response saveToOrder(ShopcarSave shopcar) {
-		Response resp = 
-				post(API.SHOPCAT_ORDER, shopcar, Response.class);
-		return resp;
+		return post(API.SHOPCAT_ORDER, shopcar, Response.class);
 	}
 	
 

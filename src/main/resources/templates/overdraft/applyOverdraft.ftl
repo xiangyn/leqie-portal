@@ -1,3 +1,10 @@
+<div class="bread-crumb">
+	<h3>申请白条</h3>
+</div>
+<div class="overdraft-apply-info">
+	<p>使用白条必须预先通过审核后，才可以使用，如果你想使用该功能，请先提交审核资料！</p>
+</div>
+
 申请白条
 <form action='' enctype="multipart/form-data" method="post" name="form1" id="form1">
     <input type="file" id="upload1" onchange="uploadPic()"  name="pic" style="display: none;">

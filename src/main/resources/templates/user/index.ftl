@@ -34,7 +34,53 @@
 					</div>
 				</div>
 				<div class="security-panel">
-					
+					<div class="panel-title">
+						<h3 class="color">安全中心</h3>
+					</div>
+					<div class="panel-content">
+						<div class="clearfix">
+							 <div class="security-list">
+							 	<div class="security-item clearfix">
+							 		<#if auth?exists>
+							 		<div class="state finish">
+							 			<span class="fa fa-check"></span>已完成
+							 		</div>
+							 		<#else/>
+							 		<div class="state no">
+							 			<span class="fa fa-remove"></span>未认证
+							 		</div>
+							 		</#if>
+							 		<div class="info">
+							 			<div class="title"><em>企&nbsp;业&nbsp;认&nbsp;证</em></div>
+		    							<div class="supply">
+		    								用于提升账号的安全性和信任级别。认证后的有卖家记录的账号不能修改认证信息。
+		    							</div>
+							 		</div>
+	    							<div class="operate">
+	    								<#if auth?exists>
+	    								<a class="color" title="查看" href="${ctx}/app/enterprise.jhtml">查看</a>
+	    								<#else/>
+	    								<a class="color" title="认证" href="${ctx}/app/enterprise/auth.jhtml">认证</a>
+	    								</#if>
+	    							</div>
+							 	</div>
+							 	<div class="security-item clearfix">
+							 		<div class="state finish">
+							 			<span class="fa fa-check"></span>已完成
+							 		</div>
+							 		<div class="info">
+							 			<div class="title"><em>登&nbsp;录&nbsp;密&nbsp;码</em></div>
+		    							<div class="supply">
+		    								安全性高的密码可以使账号更安全。建议您定期更换密码，且设置一个包含数字和字母，并长度超过6位以上的密码。
+		    							</div>
+							 		</div>
+	    							<div class="operate">
+	    								<a class="color" title="修改" href="${ctx}/app/user/updatePwd.jhtml">修改</a>
+	    							</div>
+							 	</div>
+							 </div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

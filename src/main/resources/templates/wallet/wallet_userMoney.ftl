@@ -1,3 +1,7 @@
- <div id="content" style="display: block;overflow: hidden;border:1px solid #000;height: 500px;padding-top: 100px;text-align: center;font-size: 30px;color: red">
-        余额：${money}元
-    </div>
+<div class="wallet-money">
+	<h2>我的余额：<span class="money-value">${money?string('#.00')}</span> 元</h2>
+	<div class="buttons">
+		<!-- <a href="">充 值</a>  -->
+		<a href="${ctx}/app/wallet/withdraw" class="button">申请提现</a>
+	</div>
+</div>

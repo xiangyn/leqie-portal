@@ -115,25 +115,14 @@ $(function() {
 			$("input[name='sheng']", this).val(address[0]);
 			$("input[name='shi']", this).val(address[1]);
 			$("input[name='qu']", this).val(address[2]);
-			$.ajax({
+			$.fastAjax({
 				url: "${ctx}/app/recvAddress/save.jo",
-				type: 'POST',
 				data: $("#_form").serializeObject(),
-				dataType:'json',
 				success: function(ret) {
 					if(ret.success) {
-						iziToast.success({
-					        message: '添加地址成功!',
-					        position: 'topCenter',
-					        transitionIn: 'bounceInLeft',
-					        onClose: success
-					    });
+						$.info.success('添加地址成功!', success);
 					}else {
-						iziToast.error({
-					        message: '添加地址失败，请刷新后再试!',
-					        position: 'topCenter',
-					        transitionIn: 'bounceInLeft'
-					    });
+						$.info.error('添加地址失败，请刷新后再试!');
 					}
 				}
 			});

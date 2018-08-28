@@ -3,6 +3,7 @@
 <head>
 	<#include "/common/head.ftl" />
 	<link href="${ctx}/static/css/font-awesome.min.css" rel="stylesheet">
+	<link href="${ctx}/static/css/iziToast.min.css" rel="stylesheet">
 	<link href="${ctx}/static/css/app.css" rel="stylesheet">
     <style type="text/css">
         .li1{
@@ -37,11 +38,13 @@
 						<li class="order-menu-item <#if tip?? && 'withdrawList'==tip>active</#if>"><a href="${ctx}/app/wallet/withdrawList?p=1">提现列表</a></li>
 					</ul>
 				</div>
+				<div class="panel-content wallet-content">
 				<#if tip?? && "userMoney"==tip ><#include "wallet_userMoney.ftl" /></#if>
                 <#if tip?? && "chargeList"==tip ><#include "wallet_chargeList.ftl" /></#if>
                 <#if tip?? && "consumeList"==tip ><#include "wallet_consumeList.ftl" /></#if>
                 <#if tip?? && "withdraw"==tip ><#include "wallet_withdraw.ftl" /></#if>
                 <#if tip?? && "withdrawList"==tip ><#include "wallet_withdrawList.ftl" /></#if>
+                </div>
 			</div>
 		</div>
 	</div>

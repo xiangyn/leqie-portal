@@ -4,7 +4,7 @@
 			<div class="col left">
 				<span>乐切欢迎您！</span>
 				<#if Session.__user?exists>
-					<a class="color" href="${ctx}/app/index.jhtml">${Session.__user.name}</a>
+					<a class="color" href="${ctx}/app/order/index.jhtml">${Session.__user.name}</a>
 					<a class="color-hover" href="${ctx}/app/logout.jhtml">退出</a>
 				<#else />
 					<a class="color" href="${ctx}/app/login.jhtml">请先登录</a>

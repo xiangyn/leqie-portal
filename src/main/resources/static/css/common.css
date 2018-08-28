@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6 { color: #4d4d4d; }
 
 a { color: #4d4d4d; }
 a:focus { text-decoration: none; }
-
+a.color { text-decoration: none; }
 *:focus { outline: none; } 
 button:focus, input:focus, textarea:focus { border-color: #0080ff!important; }
 button.disabled, button:disabled  { cursor: not-allowed; }
@@ -151,6 +151,8 @@ a.btn { text-decoration: none; }
 .btn-block { width: 100%; padding: 8px 0; }
 form .form-item { display: block; }
 form .form-item input { border: 1px solid #dedeed; padding: 5px; width: 100%; height: 42px; box-sizing: border-box; }
+form .form-item .item-value { margin: 10px 8px; display: inline-block; color: #999; font-size: 15px; }
+form .form-item .item-value img { width: 100%; }
 form .form-item textarea { border: 1px solid #dedeed; padding: 8px; width: 100%; height: 100px; box-sizing: border-box; resize: none; }
 form .form-item button, form .form-item .btn { border: 0; border-radius: 4px; background: #0080ff; font-size: 15px; color: #fff; padding: 10px 12px; cursor: pointer; }
 form .form-item.form-icon-item { position: relative; }

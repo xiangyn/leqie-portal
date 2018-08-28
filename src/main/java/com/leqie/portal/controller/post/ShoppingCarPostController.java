@@ -54,7 +54,7 @@ public class ShoppingCarPostController {
 	public Result<Response> order(@ModelAttribute("model")ShopcarSave model, HttpServletRequest request) {
 		model.setPhone(WebUtil.getUserPhone(request));
 		Response resp = service.saveToOrder(model);
-		return new Result<Response>(ResponseStatus.SUCCESS.equals(resp.getStatus())).setData(resp);
+		return new Result<Response>(resp != null && ResponseStatus.SUCCESS.equals(resp.getStatus())).setData(resp);
 	}
 	
 }

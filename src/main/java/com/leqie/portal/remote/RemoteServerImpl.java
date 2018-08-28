@@ -69,7 +69,7 @@ public class RemoteServerImpl implements RemoteServer {
 	@Override
 	public void request(String path, OutputStream output) throws IOException {
 		try {
-			String url = generateUrl(path);
+			String url = generateUrl(path, true);
 			HttpEntity entity = doGet(url);
 			IOUtils.copy(entity.getContent(), output);
 		}catch (MalformedURLException e) {
@@ -81,7 +81,7 @@ public class RemoteServerImpl implements RemoteServer {
 	@Override
 	public <T> T request(String path, Map<String, Object> requestParams, Method method, Class<T> responseType) throws IOException {
 		try {
-			String url = generateUrl(path);
+			String url = generateUrl(path, false);
 			if(method == RemoteServer.Method.GET) {
 				return json(doGet(url, requestParams), responseType);
 			}else if(method == RemoteServer.Method.POST) {
@@ -100,7 +100,7 @@ public class RemoteServerImpl implements RemoteServer {
 	@Override
 	public <T> T uploadFile(String path, String name, File file, Class<T> responseType) {
 		try {
-			String url = generateUrl(path);
+			String url = generateUrl(path, false);
 			
 			// 声明 http get 请求
 	        HttpPost httpPost = new HttpPost(url);
@@ -134,7 +134,7 @@ public class RemoteServerImpl implements RemoteServer {
 		return null;
 	}
 
-	protected String generateUrl(String path) throws MalformedURLException {
+	protected String generateUrl(String path, boolean root) throws MalformedURLException {
 		if(path.startsWith("http:") || path.startsWith("https:")) {
 			return path;
 		}else {
@@ -143,7 +143,7 @@ public class RemoteServerImpl implements RemoteServer {
 				filePath.append("/");
 			}
 			filePath.append(path);
-			return new URL(this.protocol, this.host, this.port, filePath.toString()).toString();
+			return new URL(this.protocol, this.host, this.port, root ? "/" + path : filePath.toString()).toString();
 		}
 	}
 	

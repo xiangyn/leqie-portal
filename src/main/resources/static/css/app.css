@@ -40,6 +40,12 @@
 .app .orders-panel .buy-product-list .table { margin: 15px auto; }
 .app .orders-panel .buy-product-list .table a { text-decoration: none; color: #0080ff; }
 
+.app .wallet-content {  }
+.app .wallet-content .wallet-money { border: 1px solid #CCC; padding: 50px 0; }
+.app .wallet-content .wallet-money h2 { font-size: 16px; margin-left: 200px; color: #888; }
+.app .wallet-content .wallet-money h2 .money-value { font-size: 20px; color: red; }
+.app .wallet-content .wallet-money .buttons { padding: 40px 0 40px 250px; }
+
 .app .address .form-content { margin: 20px auto; }
 .app .address .t-change, .app .col-right.address .t-delete, .app .col-right.address .t-default {
 	color: #0080ff; text-decoration: none;
@@ -60,3 +66,13 @@
 
 .app .user-manage .security-panel { background: #F6F6F6; padding: 5px 20px 30px; margin-top: 20px; }
 .app .user-manage .security-panel .panel-title { margin: 10px 0 15px; }
+.app .user-manage .security-panel .security-list { padding: 10px 50px; }
+.app .user-manage .security-panel .security-item  { border-bottom: 1px solid #CCC; padding: 15px 0 10px; }
+.app .user-manage .security-panel .security-item .state { float: left; margin: 10px 20px; }
+.app .user-manage .security-panel .security-item .state span.fa { display: block; font-size: 35px; }
+.app .user-manage .security-panel .security-item .state.finish { color: green;  }
+.app .user-manage .security-panel .security-item .state.no { color: red; }
+.app .user-manage .security-panel .security-item .info { float: left; margin: 10px; }
+.app .user-manage .security-panel .security-item .info .title { font-size: 15px; color: #0080ff; }
+.app .user-manage .security-panel .security-item .info .supply { color: #999; margin-top: 5px; }
+.app .user-manage .security-panel .security-item .operate { float: right; margin: 40px 40px 0; }

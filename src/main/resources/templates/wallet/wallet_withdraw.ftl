@@ -1,27 +1,117 @@
-<form id="form1" name="form1" >
-	<div class="form-group"><label class="form-label">提现金额</label><input class="form-control" type="text" name="money" id="money"/></div>
-    <div class="form-group"><label class="form-label">开户行名称</label><input class="form-control" type="text" name="name" id="name"/></div>
-    <div class="form-group"><label class="form-label">开户行账号</label><input class="form-control" type="text" name="account" id="account"/></div>
-    <div class="form-group"><label class="form-label">开户人</label><input class="form-control" type="text" name="person" id="person"/></div>
-    <div class="form-group"><label class="form-label">开户行地址</label><input class="form-control" type="text" name="address" id="address"/></div>
-</form>
-<input id="myButton" type="button" class="btn btn-primary ml-auto" style="float:right" value="提交"/>
-<script>
-$(function(){
-    var ajaxFormOption = {
-        type: "post",  //提交方式
-        dataType: "json", //数据类型
-        //data: myData,//自定义数据参数，视情况添加
-        url: "withdraw", //请求url
-        success: function (data) { //提交成功的回调函数
-            alert(data.msg);
-            document.getElementById("form1").reset();
-        }
-    };
-
-    $("#myButton").on("click",function () {
-        $form("#form1").ajaxSubmit(ajaxFormOption);
-    })
-})
-
+<div class="address wallet-money">
+	<div class="form-content">
+		<form id="_form">
+			<div class="form-content">
+				<div class="row">
+					<div class="col quarter text-right">
+						<label class="form-label required">提现金额</label>
+					</div>
+					<div class="col half">
+						<div class="form-item">
+							<input name="money" class="number" type="text" placeholder="请输入提现金额" required="required" />
+						</div>
+						<span class="form-item-msg"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col quarter text-right">
+						<label class="form-label required">开户行名称</label>
+					</div>
+					<div class="col half">
+						<div class="form-item">
+							<input name="name" type="text" placeholder="请输入开户行名称" required="required" />
+						</div>
+						<span class="form-item-msg"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col quarter text-right">
+						<label class="form-label required">开户行账号</label>
+					</div>
+					<div class="col half">
+						<div class="form-item">
+							<input name="account" type="text" placeholder="请输入开户行账号" required="required" />
+						</div>
+						<span class="form-item-msg"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col quarter text-right">
+						<label class="form-label required">开户行账号</label>
+					</div>
+					<div class="col half">
+						<div class="form-item">
+							<input name="person" type="text" placeholder="请输入开户人" required="required" />
+						</div>
+						<span class="form-item-msg"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col quarter text-right">
+						<label class="form-label required">开户行地址</label>
+					</div>
+					<div class="col half">
+						<div class="form-item">
+							<input name="address" type="text" placeholder="请输入开户行地址" required="required" />
+						</div>
+						<span class="form-item-msg"></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col quarter text-right">
+						&nbsp;
+					</div>
+					<div class="col half">
+						<div class="form-item text-center">
+							<button type="button" id="save-btn"> 提 交 </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript" src="${ctx}/static/js/iziToast.min.js"></script>
+<script type="text/javascript" src="${ctx}/static/js/utils.js"></script>
+<script type="text/javascript">
+$(function() {
+	
+	$("#save-btn").on("click", function() {
+		$("#_form").trigger("submit");
+	});
+	$("#_form").on("submit", function() {
+		if(validate()) {
+			$.fastAjax({
+				url: "${ctx}/app/wallet/withdraw",
+				data: $("#_form").serializeObject(),
+				success: function(ret) {
+					if(ret.status == '1') {
+						$.info.success('已提交申请，请等待2～3个工作日!', function() {
+							window.location.href = "${ctx}/app/wallet";
+						});
+					}else {
+						$.info.error(ret.msg);
+					}
+				}
+			});
+		}
+		return false;
+	});
+	
+	function validate() {
+		var ret = true;
+		$("#_form input").each(function() {
+			if(this.type !== 'hidden') {
+				var text = $(this).val();
+				if(!text) {
+					var $row = $(this).closest(".row");
+					$row.find(".form-item-msg").text($row.find(".form-label").text() + "不能为空");
+					ret = false;
+				}
+			}
+		});
+		return ret;
+	}
+	
+});
 </script>
