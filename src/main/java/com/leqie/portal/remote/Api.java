@@ -100,4 +100,19 @@ public class Api {
 	
 	public String INVOICE_APPLY = "/user/saveKaipiao";
 	
+	
+	public String OVERDRAFT_INFO = "/user/getBaitiaoById";
+	
+	public String OVERDRAFT_SAVE = "/user/saveBaitiao";
+	
+	public String OVERDRAFT_UPDATE = "/user/updateBaitiao";
+	
+	public String OVERDRAFT_EDU = "/user/getBaitiaoEDuById";
+	
+	public String OVERDRAFT_BILL = "/user/baitiaoBillList";
+	
+	public String OVERDRAFT_PAY_LIST = "/user/baitiaoHuanKuanList";
+	
+	
+	
 }

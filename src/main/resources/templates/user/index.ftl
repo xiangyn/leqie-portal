@@ -15,7 +15,7 @@
 		<div class="container clearfix">
 			<#include "/common/app-menu.ftl" />
 			<div class="col-right user-manage">
-				<div class="user-panel">
+				<div class="info-panel">
 					<div class="panel-title">
 						<h3 class="color">基本信息</h3>
 					</div>

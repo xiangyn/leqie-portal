@@ -1,8 +1,8 @@
 package com.leqie.portal.model.request.product;
 
-import com.leqie.portal.model.request.Page;
+import com.leqie.portal.model.request.PageHead;
 
-public class ZhengBanPage extends Page {
+public class ZhengBanPage extends PageHead {
 
 	private String xinghao;
 	

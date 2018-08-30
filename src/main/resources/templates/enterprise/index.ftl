@@ -20,7 +20,7 @@
 				</div>
 				<#if data?exists>
 					<#if data.shenhezhuangtai == '审核中'>
-						<#include "/enterprise/info.ftl"/>
+						<p class="empty-info text-center" style="color:red">你提交的认证正在审核中！</p>
 					<#elseif data.shenhezhuangtai == '审核通过'>
 						<#include "/enterprise/info.ftl"/>
 					<#elseif data.shenhezhuangtai == '审核拒绝'>

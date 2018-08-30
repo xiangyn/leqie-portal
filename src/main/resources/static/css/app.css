@@ -55,14 +55,18 @@
 .app .address .dropzone .dz-message { margin: 5em 0 0; }
 .app .enterprise-panel .empty-info { line-height: 240px; }
 
-.app .user-manage .user-panel { background: #F6F6F6; padding: 5px 20px 30px; }
-.app .user-manage .user-panel .panel-title { margin: 10px 0 15px; }
-.app .user-manage .user-panel .list-infos { float: left; margin: 10px 0; padding-left: 30px; }
-.app .user-manage .user-panel .list-infos p { line-height: 26px; font-size: 13px; }
-.app .user-manage .user-panel .list-infos p .fa { display: inline-block; text-align: center; width: 40px; color: #0080ff; }
-.app .user-manage .user-panel .list-infos p .info { display: inline-block; margin-left: 40px; color: #999; }
-.app .user-manage .user-panel .infos-edit a { display: inline-block; text-decoration: none; color: #fff; background: #0080ff; padding: 5px 10px; border-radius: 3px; }
-.app .user-manage .user-panel .form-item span { display: inline-block; margin: 10px; }
+.app .info-panel { background: #F6F6F6; padding: 5px 20px 30px; margin: 10px auto; }
+.app .info-panel .panel-title { margin: 10px 0 15px; }
+.app .info-panel .list-infos { float: left; margin: 5px 0; padding-left: 30px; }
+.app .info-panel .list-infos p { line-height: 26px; font-size: 13px; }
+.app .info-panel .list-infos p .fa { display: inline-block; text-align: center; width: 40px; color: #0080ff; }
+.app .info-panel .list-infos p .info { display: inline-block; margin-left: 40px; color: #999; }
+.app .info-panel .status-infos { float: right; margin: 5px 15px; }
+.app .info-panel .status-infos p { text-align: right; }
+.app .info-panel .status-infos span { color: red; }
+.app .info-panel .infos-edit { margin-right: 20px; }
+.app .info-panel .infos-edit a { display: block; text-decoration: none; color: #fff; background: #0080ff; padding: 5px 10px; border-radius: 3px; margin-bottom: 10px; }
+.app .info-panel .form-item span { display: inline-block; margin: 10px; }
 
 .app .user-manage .security-panel { background: #F6F6F6; padding: 5px 20px 30px; margin-top: 20px; }
 .app .user-manage .security-panel .panel-title { margin: 10px 0 15px; }
@@ -76,3 +80,11 @@
 .app .user-manage .security-panel .security-item .info .title { font-size: 15px; color: #0080ff; }
 .app .user-manage .security-panel .security-item .info .supply { color: #999; margin-top: 5px; }
 .app .user-manage .security-panel .security-item .operate { float: right; margin: 40px 40px 0; }
+
+.app ul.panel-menu { margin-bottom: 10px; border-bottom: 4px solid #CCC; }
+.app ul.panel-menu .item { border-left: 1px solid #CCC; padding: 1px 5px 5px; float: left; margin: 2px 0; border-bottom: 4px solid #CCC; position: relative; bottom: -6px; }
+.app ul.panel-menu .item a { display: inline-block; font-size: 14px; padding: 0 10px; text-decoration: none; }
+.app ul.panel-menu .item.active { border-bottom: 4px solid #0080ff; }
+.app ul.panel-menu .item.active a { color: #0080ff; }
+.app ul.panel-menu .item:first-child { border-left: none; }
+

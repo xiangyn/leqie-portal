@@ -11,9 +11,9 @@ import com.leqie.portal.model.Order2;
 import com.leqie.portal.model.request.order.OrderMoney;
 import com.leqie.portal.model.request.order.OrderPage;
 import com.leqie.portal.model.request.order.OrderSave;
+import com.leqie.portal.model.response.ListResponse;
 import com.leqie.portal.model.response.OrderMoneyResponse;
 import com.leqie.portal.model.response.OrderPesponse;
-import com.leqie.portal.model.response.OrdersPesponse;
 import com.leqie.portal.model.response.Response;
 import com.leqie.portal.service.OrderService;
 import com.leqie.portal.web.model.Result;
@@ -21,6 +21,8 @@ import com.leqie.portal.web.model.Result;
 @Service
 public class OrderServceiImpl extends AbstarctService implements OrderService {
 
+	public static class OrdersPesponse extends ListResponse<Order2> {}
+	
 	@Override
 	public List<Order2> findOrder(OrderPage request) {
 		OrdersPesponse resp = post(API.ORDER_LIST, request, OrdersPesponse.class);

@@ -28,7 +28,7 @@
 									<label class="form-label">账号</label>
 								</div>
 								<div class="col half">
-									<div class="form-item"><span>${Session.__user.phone}</span></div>
+									<div class="form-item"><span class="item-value">${Session.__user.phone}</span></div>
 									<span class="form-item-msg"></span>
 								</div>
 							</div>

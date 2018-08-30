@@ -9,7 +9,7 @@ import com.leqie.portal.constants.ResponseStatus;
 import com.leqie.portal.model.InvoiceInfo;
 import com.leqie.portal.model.Order2;
 import com.leqie.portal.model.request.InvoiceOrder;
-import com.leqie.portal.model.response.OrdersPesponse;
+import com.leqie.portal.model.response.ListResponse;
 import com.leqie.portal.model.response.Response;
 import com.leqie.portal.model.response.ResultResponse;
 import com.leqie.portal.service.InvoiceService;
@@ -44,6 +44,8 @@ public class InvoiceServceImpl extends AbstarctService implements InvoiceService
 		Response resp = post(API.INVOICE_DELETE, model, Response.class);
 		return resp != null && ResponseStatus.SUCCESS.equals(resp.getStatus());
 	}
+	
+	public static class OrdersPesponse extends ListResponse<Order2> {}
 
 	@Override
 	public List<Order2> findOrderCanInvoice(InvoiceOrder search) {

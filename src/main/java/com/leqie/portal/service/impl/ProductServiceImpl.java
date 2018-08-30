@@ -17,14 +17,16 @@ import com.leqie.portal.model.request.product.XingcaiKuandu;
 import com.leqie.portal.model.request.product.ZhengBanPage;
 import com.leqie.portal.model.request.product.Zhengzhi;
 import com.leqie.portal.model.response.CateResponse;
+import com.leqie.portal.model.response.ListResponse;
 import com.leqie.portal.model.response.ProductParamsResponse;
 import com.leqie.portal.model.response.ProductResultResponse;
 import com.leqie.portal.model.response.ProductZhengResponse;
-import com.leqie.portal.model.response.ProductZhengsResponse;
 import com.leqie.portal.service.ProductService;
 
 @Service
 public class ProductServiceImpl extends AbstarctService implements ProductService {
+	
+	public static class ProductZhengsResponse extends ListResponse<ProductZheng> { }
 	
 	@Override
 	public List<ProductZheng> findZhengPage(ZhengBanPage request) {

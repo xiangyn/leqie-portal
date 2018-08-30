@@ -1,5 +1,23 @@
 <div class="bread-crumb">
-	<h3>申请白条</h3>
+	<h3>我的白条</h3>
+</div>
+<div class="info-panel">
+	<div class="panel-title">
+		<h3 class="color">基本信息</h3>
+	</div>
+	<div class="panel-content">
+		<div class="clearfix">
+			<div class="list-infos left">
+				<p><span class="fa fa-user"></span> 账号：<span class="info">${Session.__user.phone}</span></p>
+				<p><span class="fa fa-id-card"></span> 姓名：<span class="info">${Session.__user.name}</span></p>
+				<p><span class="fa fa-home"></span> 公司：<span class="info">${Session.__user.company!'暂无'}</span></p>
+				<p><span class="fa fa-briefcase"></span> 职位：<span class="info">${Session.__user.zhiwei!'暂无'}</span></p>
+			</div>
+			<div class="infos-edit right">
+				<a href="${ctx}/app/overdraft/apply.jhtml" >申请白条</a>
+			</div>
+		</div>
+	</div>
 </div>
 <div class="overdraft-apply-info">
 	<p>使用白条必须预先通过审核后，才可以使用，如果你想使用该功能，请先提交审核资料！</p>

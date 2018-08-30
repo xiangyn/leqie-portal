@@ -10,7 +10,7 @@ import com.leqie.portal.constants.ResponseStatus;
 import com.leqie.portal.controller.ShopCarInfo;
 import com.leqie.portal.model.ShopSnapshot;
 import com.leqie.portal.model.ShopcarSave;
-import com.leqie.portal.model.request.ShopCarPage;
+import com.leqie.portal.model.request.PhonePage;
 import com.leqie.portal.model.request.order.OrderSave;
 import com.leqie.portal.model.response.Response;
 import com.leqie.portal.model.response.ResultResponse;
@@ -35,7 +35,7 @@ public class ShoppingCarServiceImpl extends AbstarctService implements ShoppingC
 	public static final class ShopSnapshotResp extends ResultResponse<List<ShopSnapshot>> {}
 	
 	@Override
-	public List<ShopSnapshot> getShopCarList(ShopCarPage search) {
+	public List<ShopSnapshot> getShopCarList(PhonePage search) {
 		ShopSnapshotResp resp =
 				post(API.SHOPCAR_LIST, search, ShopSnapshotResp.class);
 		if(resp != null && ResponseStatus.SUCCESS.equals(resp.getStatus())) {

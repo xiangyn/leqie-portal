@@ -1,8 +1,8 @@
 package com.leqie.portal.model.request.order;
 
-import com.leqie.portal.model.request.Page;
+import com.leqie.portal.model.request.PageHead;
 
-public class OrderPage extends Page {
+public class OrderPage extends PageHead {
 
 	private String phone;
 	

@@ -1,10 +1,10 @@
 package com.leqie.portal.model.request;
 
-public class Page {
+public class PageHead {
 
 	private int pageNum = 1;
 	
-	private int pageSize = 10;
+	private int pageSize = 5;
 
 	public int getPageNum() {
 		return pageNum;

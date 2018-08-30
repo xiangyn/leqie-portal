@@ -16,5 +16,4 @@ public class ListResult<T> extends Result<List<T>> {
 		super(data);
 	}
 
-	
 }

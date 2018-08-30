@@ -5,7 +5,7 @@
 		</div>
 		<div class="col half">
 			<div class="form-item">
-				<span class="item-value">${data.gongsimingchen} <small class="right" style="color:red">&nbsp;(${data.shenhezhuangtai})</small></span>
+				<span class="item-value">${data.gongsimingchen!''} <small class="right" style="color:red">&nbsp;(${data.shenhezhuangtai})</small></span>
 				
 			</div>
 			<span class="form-item-msg"></span>
@@ -17,7 +17,7 @@
 		</div>
 		<div class="col half">
 			<div class="form-item">
-				<span class="item-value">${data.jingyingmoshi}</span>
+				<span class="item-value">${data.jingyingmoshi!''}</span>
 			</div>
 			<span class="form-item-msg"></span>
 		</div>
@@ -28,7 +28,7 @@
 		</div>
 		<div class="col half">
 			<div class="form-item">
-				<span class="item-value">${data.gongsifuzeren}</span>
+				<span class="item-value">${data.gongsifuzeren!''}</span>
 			</div>
 			<span class="form-item-msg"></span>
 		</div>
@@ -39,7 +39,7 @@
 		</div>
 		<div class="col half">
 			<div class="form-item">
-				<span class="item-value">${data.lianxiren}</span>
+				<span class="item-value">${data.lianxiren!''}</span>
 			</div>
 			<span class="form-item-msg"></span>
 		</div>
@@ -50,7 +50,7 @@
 		</div>
 		<div class="col half">
 			<div class="form-item">
-				<span class="item-value">${data.lianxirendianhua}</span>
+				<span class="item-value">${data.lianxirendianhua!''}</span>
 			</div>
 			<span class="form-item-msg"></span>
 		</div>
@@ -61,7 +61,7 @@
 		</div>
 		<div class="col half">
 			<div class="form-item">
-				<span class="item-value">${data.xiangxidizhi}</span>
+				<span class="item-value">${data.xiangxidizhi!''}</span>
 			</div>
 			<span class="form-item-msg"></span>
 		</div>
@@ -72,7 +72,7 @@
 		</div>
 		<div class="col half">
 			<div class="form-item">
-				<span class="item-value">${data.gongsijieshao}</span>
+				<span class="item-value">${data.gongsijieshao!''}</span>
 			</div>
 			<span class="form-item-msg"></span>
 		</div>

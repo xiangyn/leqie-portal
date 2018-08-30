@@ -1,6 +1,6 @@
 package com.leqie.portal.model.request;
 
-public class ShopCarPage extends Page {
+public class PhonePage extends PageHead {
 
 	private String phone;
 
