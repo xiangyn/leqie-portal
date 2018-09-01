@@ -63,7 +63,7 @@
 			<form class="form">
 			<div class="product-order">
 				<input type="hidden" name="zhonglei" value="${model.zhonglei}" />
-				<input type="hidden" name="erjimulu" value="${model.erjimulu}" />
+				<input type="hidden" name="erjimulu" value="${model.xinghaoName}" />
 				<input type="hidden" name="chang" value="${model.chang!}" />
 				<input type="hidden" name="kuang" value="${model.kuang!}" />
 				<input type="hidden" name="hou" value="${model.hou!}" />

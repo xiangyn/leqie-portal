@@ -10,7 +10,7 @@
 .app-menus .app-menu-list { margin: 4px 0 4px 25px; }
 .app-menus .app-menu-list li { font-size: 0.8; }
 
-.app .col-right { border-left: 1px solid #CCC; width: 990px; margin-left: 10px; float: right; box-sizing: border-box; padding: 10px 0 20px 20px; }
+.app .col-right { border-left: 1px solid #CCC; width: 990px; margin-left: 10px; float: right; box-sizing: border-box; padding: 10px 0 20px 20px; min-height: 420px; }
 .app .col-right .bread-crumb { margin-bottom: 10px; }
 .app .col-right .bread-crumb h3 { font-size: 15px; color: #0080ff; font-weight: normal; }
 .app .col-right .buttons { margin: 15px 0; }
@@ -66,6 +66,8 @@
 .app .info-panel .status-infos span { color: red; }
 .app .info-panel .infos-edit { margin-right: 20px; }
 .app .info-panel .infos-edit a { display: block; text-decoration: none; color: #fff; background: #0080ff; padding: 5px 10px; border-radius: 3px; margin-bottom: 10px; }
+.app .info-panel .infos-edit p { text-align: right; font-size: 14px; margin: 0 0 5px; }
+.app .info-panel .infos-edit p span { font-size: 22px; color: red; }
 .app .info-panel .form-item span { display: inline-block; margin: 10px; }
 
 .app .user-manage .security-panel { background: #F6F6F6; padding: 5px 20px 30px; margin-top: 20px; }
@@ -81,6 +83,7 @@
 .app .user-manage .security-panel .security-item .info .supply { color: #999; margin-top: 5px; }
 .app .user-manage .security-panel .security-item .operate { float: right; margin: 40px 40px 0; }
 
+.app .overdraft-apply-info p { margin: 80px 0; text-align: center; color: red; }
 .app ul.panel-menu { margin-bottom: 10px; border-bottom: 4px solid #CCC; }
 .app ul.panel-menu .item { border-left: 1px solid #CCC; padding: 1px 5px 5px; float: left; margin: 2px 0; border-bottom: 4px solid #CCC; position: relative; bottom: -6px; }
 .app ul.panel-menu .item a { display: inline-block; font-size: 14px; padding: 0 10px; text-decoration: none; }
@@ -88,3 +91,7 @@
 .app ul.panel-menu .item.active a { color: #0080ff; }
 .app ul.panel-menu .item:first-child { border-left: none; }
 
+#overdraft-list { margin-bottom: 10px; }
+#overdraft-list .column.no { width: 40%; }
+#overdraft-list .column.money { width: 25%; }
+#overdraft-list .column.time { width: 35%; }

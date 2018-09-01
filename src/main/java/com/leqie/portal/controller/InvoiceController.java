@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.leqie.portal.constants.Template;
 import com.leqie.portal.constants.Url;
 import com.leqie.portal.model.InvoiceInfo;
-import com.leqie.portal.model.request.InvoiceOrder;
+import com.leqie.portal.model.request.UserIdPage;
 import com.leqie.portal.service.InvoiceService;
 import com.leqie.portal.utils.WebUtil;
 
@@ -48,20 +49,23 @@ public class InvoiceController {
 		return mv;
 	}
 	
-	@RequestMapping(Url.INVOICE_OPEN)
-	public ModelAndView openInvoice(HttpServletRequest request, ModelAndView mv) {
-		mv.setViewName(Template.INVOICE_OPEN);
+	@RequestMapping("/app/invoice/record-wait.jhtml")
+	public ModelAndView waitRecord(@ModelAttribute("page")UserIdPage page, 
+			HttpServletRequest request, ModelAndView mv) {
+		page.setUserId(WebUtil.getUserId(request));
+		page.setKaipiaoStatus("开票中");
+		mv.addObject("data", service.findInvoice(page));
+		mv.setViewName(Template.INVOICE_WAIT);
 		return mv;
 	}
 	
-	@RequestMapping(Url.INVOICE_WILL)
-	public ModelAndView willInvoice(@RequestParam(value="status", defaultValue="0")int status, 
+	@RequestMapping("/app/invoice/record-finished.jhtml")
+	public ModelAndView finishedRecord(@ModelAttribute("page")UserIdPage page, 
 			HttpServletRequest request, ModelAndView mv) {
-		InvoiceOrder search = new InvoiceOrder();
-		search.setPhone(WebUtil.getUserPhone(request));
-		search.setKaipiaoStatus(Integer.toString(status));
-		mv.addObject("data", service.findOrderCanInvoice(search));
-		mv.setViewName(Template.INVOICE_WILL);
+		page.setUserId(WebUtil.getUserId(request));
+		page.setKaipiaoStatus("开票完成");
+		mv.addObject("data", service.findInvoice(page));
+		mv.setViewName(Template.INVOICE_FINISHED);
 		return mv;
 	}
 	

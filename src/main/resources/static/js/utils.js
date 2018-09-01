@@ -38,6 +38,17 @@ $(function() {
 	$("input.number").on("keyup", function() {
 		this.value=this.value.replace(/[^\d]/g,'');
 	});
+	
+	$(".panel-menu .item").on("click", function() {
+		if($(this).hasClass("active")) {
+			return;
+		}
+		$(this).closest(".panel-menu").find(".item").each(function() {
+			$("#" + $(this).removeClass("active").data("panel")).css("display", "none");
+		});
+		$("#" + $(this).addClass("active").data("panel")).css("display", "block");
+		
+	});
 });
 
 $.fastAjax = function(option) {

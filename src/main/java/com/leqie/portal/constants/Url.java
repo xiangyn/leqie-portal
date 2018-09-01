@@ -64,10 +64,6 @@ public class Url {
 	
 	public static final String INVOICE_UPDATE = "/app/invoice/update" + PAGE_SUFFIX;
 	
-	public static final String INVOICE_WILL = "/app/invoice/will" + PAGE_SUFFIX;
-	
-	public static final String INVOICE_OPEN = "/app/invoice/open" + PAGE_SUFFIX;
-	
 	
 	public static final String OVERDRAFT = "/app/overdraft" + PAGE_SUFFIX;
 	

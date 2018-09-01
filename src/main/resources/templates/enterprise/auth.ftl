@@ -21,6 +21,7 @@
 					<h3>企业认证</h3>
 				</div>
 				<div class="panel-body">
+					<div class="info-panel">
 					<form class="form-content" id="_form">
 						<div class="row">
 							<div class="col quarter text-right">
@@ -142,6 +143,7 @@
 							</div>
 						</div>
 					</form>
+					</div>
 				</div>
 			</div>
 		</div>

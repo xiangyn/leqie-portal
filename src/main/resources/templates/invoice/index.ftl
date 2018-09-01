@@ -21,8 +21,7 @@
 				</div>
 				<div class="row clearfix buttons">
 					<div class="left">
-						<a href="${ctx}/app/invoice/new.jhtml" class="button"><span class="fa fa-indent"></span> 申请开票</a>
-						<a href="${ctx}/app/invoice/new.jhtml" class="button"><span class="fa fa-list"></span> 开票记录</a>
+						<a href="${ctx}/app/invoice/record-wait.jhtml" class="button"><span class="fa fa-list"></span> 开票记录</a>
 					</div>
 					<div class="right">
 						<a href="${ctx}/app/invoice/new.jhtml" class="button"><span class="fa fa-plus"></span> 新增</a>

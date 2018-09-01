@@ -111,6 +111,7 @@
 						<form action="${ctx}/app/order/buy.jhtml" method="post">
 						<input type="hidden" name="zhonglei" value="整板"/>
 						<input type="hidden" name="erjimulu" value="${data.lvxing.id}"/>
+						<input type="hidden" name="xinghaoName" value="${data.lvxing.name}"/>
 						<input type="hidden" name="chang" value="${data.arg3}"/>
 						<input type="hidden" name="kuang" value="${data.arg2}"/>
 						<input type="hidden" name="hou" value="${data.arg1}"/>

@@ -37,9 +37,9 @@ public class Template {
 	
 	public static final String INVOICE_INDEX = "invoice/index";
 	
-	public static final String INVOICE_WILL = "invoice/will";
+	public static final String INVOICE_WAIT = "invoice/wait";
 	
-	public static final String INVOICE_OPEN = "invoice/open";
+	public static final String INVOICE_FINISHED = "invoice/finished";
 	
 	public static final String INVOICE_NEW = "invoice/new";
 	

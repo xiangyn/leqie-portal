@@ -6,9 +6,12 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.leqie.portal.constants.ResponseStatus;
+import com.leqie.portal.model.Invoice;
 import com.leqie.portal.model.InvoiceInfo;
 import com.leqie.portal.model.Order2;
+import com.leqie.portal.model.Page;
 import com.leqie.portal.model.request.InvoiceOrder;
+import com.leqie.portal.model.request.UserIdPage;
 import com.leqie.portal.model.response.ListResponse;
 import com.leqie.portal.model.response.Response;
 import com.leqie.portal.model.response.ResultResponse;
@@ -46,7 +49,6 @@ public class InvoiceServceImpl extends AbstarctService implements InvoiceService
 	}
 	
 	public static class OrdersPesponse extends ListResponse<Order2> {}
-
 	@Override
 	public List<Order2> findOrderCanInvoice(InvoiceOrder search) {
 		OrdersPesponse resp = post(API.ORDER_LIST, search, OrdersPesponse.class);
@@ -54,6 +56,16 @@ public class InvoiceServceImpl extends AbstarctService implements InvoiceService
 			return resp.getResult();
 		}
 		return new ArrayList<>();
+	}
+	
+	public static class InvoicesPesponse extends ListResponse<Invoice> {}
+	@Override
+	public Page<Invoice> findInvoice(UserIdPage page) {
+		InvoicesPesponse resp = post(API.INVOICE_RECORD, page, InvoicesPesponse.class);
+		if(resp != null && ResponseStatus.SUCCESS.equals(resp.getStatus())) {
+			return new Page<Invoice>(page, resp);
+		}
+		return new Page<Invoice>();
 	}
 
 }
