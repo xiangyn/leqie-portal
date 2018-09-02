@@ -36,4 +36,8 @@ public class Page<T> extends PageHead {
 		this.data = data;
 	}
 	
+	public long getPages() {
+		return (this.count % this.getPageNum() == 0) ? this.count / this.getPageNum() : this.count / this.getPageNum() + 1;
+	}
+	
 }

@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.leqie.portal.constants.OrderStatus;
 import com.leqie.portal.constants.Template;
 import com.leqie.portal.constants.Url;
+import com.leqie.portal.model.Order2;
 import com.leqie.portal.model.OrderBuy;
+import com.leqie.portal.model.Page;
 import com.leqie.portal.model.request.order.OrderPage;
 import com.leqie.portal.service.OrderService;
 import com.leqie.portal.utils.WebUtil;
@@ -51,7 +53,9 @@ public class OrderController {
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(null);
-		mv.addObject("data", service.findOrder(search));
+		Page<Order2> page = service.findOrder(search);
+		mv.addObject("data", page.getData());
+		mv.addObject("page", null);
 		mv.setViewName(Template.ORDER_INDEX);
 		return mv;
 	}
@@ -62,7 +66,9 @@ public class OrderController {
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(OrderStatus.UNPAY);
-		mv.addObject("data", service.findOrder(search));
+		Page<Order2> page = service.findOrder(search);
+		mv.addObject("data", page.getData());
+		mv.addObject("page", page);
 		mv.setViewName(Template.ORDER_UNPAY);
 		return mv;
 	}
@@ -73,7 +79,9 @@ public class OrderController {
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(OrderStatus.UNRECV);
-		mv.addObject("data", service.findOrder(search));
+		Page<Order2> page = service.findOrder(search);
+		mv.addObject("data", page.getData());
+		mv.addObject("page", page);
 		mv.setViewName(Template.ORDER_UNRECV);
 		return mv;
 	}
@@ -84,7 +92,9 @@ public class OrderController {
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(OrderStatus.FINISHED);
-		mv.addObject("data", service.findOrder(search));
+		Page<Order2> page = service.findOrder(search);
+		mv.addObject("data", page.getData());
+		mv.addObject("page", page);
 		mv.setViewName(Template.ORDER_FINISHED);
 		return mv;
 	}
@@ -95,7 +105,9 @@ public class OrderController {
 			ModelAndView mv) {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(null);
-		mv.addObject("data", service.findOrder(search));
+		Page<Order2> page = service.findOrder(search);
+		mv.addObject("data", page.getData());
+		mv.addObject("page", page);
 		mv.setViewName(Template.ORDER_ALL);
 		return mv;
 	}

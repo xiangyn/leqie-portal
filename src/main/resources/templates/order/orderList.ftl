@@ -39,6 +39,10 @@
 				</thead>
 			</table>
 		</div>
+		<#if data?size==0 && page?exists>
+			<#import "/common/page.ftl" as pagination />
+			<@pagination.pagination page=page />
+		</#if>
 		<#list data as model>
 			<div class="table order" data-no="${model.no}">
 			<table>

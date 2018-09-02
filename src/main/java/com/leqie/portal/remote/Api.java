@@ -13,9 +13,9 @@ public class Api {
 	
 	public String REGISTER = "/register";
 	
-	public String FORGET_PWD = "/sendMsg";
+	public String FORGET_PWD = "/user/forget";
 	
-	public String SMS = "/user/forget";
+	public String SMS = "/sendMsg";
 	
 	public String PRICE_LIST = "/priceList";
 	

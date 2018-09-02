@@ -1,13 +1,11 @@
 package com.leqie.portal.service.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.leqie.portal.constants.ResponseStatus;
 import com.leqie.portal.model.Order;
 import com.leqie.portal.model.Order2;
+import com.leqie.portal.model.Page;
 import com.leqie.portal.model.request.order.OrderMoney;
 import com.leqie.portal.model.request.order.OrderPage;
 import com.leqie.portal.model.request.order.OrderSave;
@@ -24,12 +22,12 @@ public class OrderServceiImpl extends AbstarctService implements OrderService {
 	public static class OrdersPesponse extends ListResponse<Order2> {}
 	
 	@Override
-	public List<Order2> findOrder(OrderPage request) {
+	public Page<Order2> findOrder(OrderPage request) {
 		OrdersPesponse resp = post(API.ORDER_LIST, request, OrdersPesponse.class);
 		if(resp != null && ResponseStatus.SUCCESS.equals(resp.getStatus())) {
-			return resp.getResult();
+			return new Page<Order2>(request, resp);
 		}
-		return new ArrayList<>();
+		return new Page<Order2>();
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package com.leqie.portal.service;
 import java.util.List;
 
 import com.leqie.portal.model.Cate;
+import com.leqie.portal.model.Page;
 import com.leqie.portal.model.ProductZheng;
 import com.leqie.portal.model.request.product.GuancaiNeijing;
 import com.leqie.portal.model.request.product.GuancaiWaijing;
@@ -20,7 +21,7 @@ public interface ProductService {
 	
 	ProductParamsResponse getParams(String zhonglei, String xinghaoId); 
 	
-	List<ProductZheng> findZhengPage(ZhengBanPage request);
+	Page<ProductZheng> findZhengPage(ZhengBanPage request);
 	
 	List<Float> getXingcaiHoudu(XingcaiKuandu request);
 	

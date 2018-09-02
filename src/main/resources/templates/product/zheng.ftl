@@ -32,9 +32,11 @@
 					</form>
 				</div>
 				<div class="product-display" id="product-zheng-display">
-					<#if data?size==0>
+					<#if page.data?size==0>
 						<p class="empty-info text-center">暂无记录！</p>
 					<#else/>
+						<#import "/common/page.ftl" as pagination />
+						<@pagination.pagination page=page url=pageUrl />
 						<ul class="product-list">
 							<li class="product-list-title clearfix">
 								<span class="column xinghao">型号</span>
@@ -43,7 +45,7 @@
 								<span class="column shijian">时间</span>
 								<span class="column caozuo">操作</span>
 							</li>
-							<#list data as each>
+							<#list page.data as each>
 							<li class="product-item clearfix">
 								<div class="column xinghao">
 									<p class="import">${each.zhonglei} ${each.canzhaozhishu}</p>

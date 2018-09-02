@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.leqie.portal.constants.ResponseStatus;
 import com.leqie.portal.model.Cate;
+import com.leqie.portal.model.Page;
 import com.leqie.portal.model.ProductZheng;
 import com.leqie.portal.model.request.product.GuancaiNeijing;
 import com.leqie.portal.model.request.product.GuancaiWaijing;
@@ -29,12 +30,12 @@ public class ProductServiceImpl extends AbstarctService implements ProductServic
 	public static class ProductZhengsResponse extends ListResponse<ProductZheng> { }
 	
 	@Override
-	public List<ProductZheng> findZhengPage(ZhengBanPage request) {
-		ProductZhengsResponse resp = post(API.PRODUCT_ZHENG_LIST, request, ProductZhengsResponse.class);
+	public Page<ProductZheng> findZhengPage(ZhengBanPage page) {
+		ProductZhengsResponse resp = post(API.PRODUCT_ZHENG_LIST, page, ProductZhengsResponse.class);
 		if(resp != null && ResponseStatus.SUCCESS.equals(resp.getStatus())) {
-			return resp.getResult();
+			return new Page<ProductZheng>(page, resp);
 		}
-		return new ArrayList<>();
+		return new Page<>();
 	}
 
 	@Override

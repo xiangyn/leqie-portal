@@ -597,6 +597,13 @@ form .form-label.required:before { content: "*"; color: red; display: inline-blo
     line-height: inherit
 }
 
+.leqie-page { margin: 10px auto; }
+.leqie-page .page-info { padding: 4px 0; }
+.leqie-page .page-buttons a { display: inline-block; text-decoration: none; padding: 4px 12px; border: 1px solid #0080ff; border-radius: 3px; color: #0080ff; margin: 0 4px; }
+.leqie-page .page-buttons a.disabled { cursor: not-allowed; border-color: #CCC; color: #CCC; }
+.leqie-page .page-buttons a:LAST-CHILD { margin-right: 0; }
+
+
 .form-item.dropzone {
 	border: 2px dashed #0087F7;
 	border-radius: 5px;

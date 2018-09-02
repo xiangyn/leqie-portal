@@ -1,5 +1,9 @@
 <div class="panel-content">
 	<div class="buy-product-list">
+		<#if data.count != 0>
+		<#import "/common/page.ftl" as pagination />
+		<@pagination.pagination page=data />
+		</#if>
 		<div class="table">
 			<table>
 				<colgroup>
