@@ -54,7 +54,7 @@ public class InvoiceController {
 			HttpServletRequest request, ModelAndView mv) {
 		page.setUserId(WebUtil.getUserId(request));
 		page.setKaipiaoStatus("开票中");
-		mv.addObject("data", service.findInvoice(page));
+		mv.addObject("page", service.findInvoice(page));
 		mv.setViewName(Template.INVOICE_WAIT);
 		return mv;
 	}
@@ -64,7 +64,7 @@ public class InvoiceController {
 			HttpServletRequest request, ModelAndView mv) {
 		page.setUserId(WebUtil.getUserId(request));
 		page.setKaipiaoStatus("开票完成");
-		mv.addObject("data", service.findInvoice(page));
+		mv.addObject("page", service.findInvoice(page));
 		mv.setViewName(Template.INVOICE_FINISHED);
 		return mv;
 	}

@@ -2,7 +2,7 @@
 	<div class="buy-product-list">
 		<#if data.count != 0>
 		<#import "/common/page.ftl" as pagination />
-		<@pagination.pagination page=data />
+		<@pagination.pagination page=page />
 		</#if>
 		<div class="table">
 			<table>
@@ -30,14 +30,14 @@
 							<div class="table-cell-wrapper">状态</div>
 						</th>
 					</tr>
-					<#if data.count == 0>
+					<#if page.count == 0>
 					<tr>
 						<td colspan="7">
 							<p class="empty-info text-center">暂无发票记录！</p>
 						</td>
 					</tr>
 					<#else />
-					<#list data.data as each>
+					<#list page.data as each>
 					<tr>
 						<td type="body" class="table-cell" role="gridcell">${each.orderIds}</td>
 						<td type="body" class="table-cell" role="gridcell">${each.kaipiaotaitou}</td>

@@ -57,6 +57,8 @@ public class Api {
 	
 	public String ORDER_DETAIL = "/user/detailList";
 	
+	public String ORDER_PIC_ORDER = "/user/savePicOrder";
+	
 	public String ORDER_SAVE = "/user/ordersSave";
 	
 	public String ORDER_MONEY = "/user/getOrderMoney";

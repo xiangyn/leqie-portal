@@ -1,3 +1,7 @@
+<#if page.count != 0>
+<#import "/common/page.ftl" as pagination />
+<@pagination.pagination page=page />
+</#if>
 <div class="table">
 	<table>
 		<colgroup>
@@ -19,14 +23,14 @@
 			</tr>
 		</thead>
 		<tbody class="table-body">
-			<#if chargeList?size==0>
+			<#if page.count==0>
 				<tr class="table-row first" role="row">
 					<td colspan="7" class="table-cell first" role="gridcell">
 						<p class="table-cell-wrapper text-center">暂无充值记录！</p>
 					</td>
 				</tr>
 			<#else/>
-			<#list chargeList as each>
+			<#list page.data as each>
 				<tr class="table-row first" role="row">
 					<td type="body" class="table-cell first" role="gridcell">
 						<div class="table-cell-wrapper">${each.no}</div></td>

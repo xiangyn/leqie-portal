@@ -37,7 +37,9 @@
 .app .orders-panel .column.status { width: 15%; }
 .app .orders-panel .column.opear { width: 15%; }
 
+.app .orders-panel .buy-product-list { margin-top: 0; }
 .app .orders-panel .buy-product-list .table { margin: 15px auto; }
+.app .orders-panel .buy-product-list .table:FIRST-CHILD { margin: 0 auto; }
 .app .orders-panel .buy-product-list .table a { text-decoration: none; color: #0080ff; }
 
 .app .wallet-content {  }

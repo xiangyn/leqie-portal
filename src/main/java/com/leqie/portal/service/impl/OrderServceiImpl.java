@@ -1,5 +1,8 @@
 package com.leqie.portal.service.impl;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 import com.leqie.portal.constants.ResponseStatus;
@@ -73,6 +76,15 @@ public class OrderServceiImpl extends AbstarctService implements OrderService {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public boolean fastOrder(String userId, String file) {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("userId", userId);
+		params.put("file", file);
+		Response resp = post(API.ORDER_PIC_ORDER, params, Response.class);
+		return resp != null && ResponseStatus.SUCCESS.equals(resp.getStatus());
 	}
 	
 }

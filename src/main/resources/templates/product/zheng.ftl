@@ -32,7 +32,7 @@
 					</form>
 				</div>
 				<div class="product-display" id="product-zheng-display">
-					<#if page.data?size==0>
+					<#if page.count==0>
 						<p class="empty-info text-center">暂无记录！</p>
 					<#else/>
 						<#import "/common/page.ftl" as pagination />

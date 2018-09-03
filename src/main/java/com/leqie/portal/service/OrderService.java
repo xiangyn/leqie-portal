@@ -19,6 +19,8 @@ public interface OrderService {
 	
 	public OrderMoneyResponse getOrderMoney(OrderMoney request);
 	
+	public boolean fastOrder(String userId, String file);
+	
 	public boolean cancelOrder(String no);
 	
 	public boolean finishOrder(String no);

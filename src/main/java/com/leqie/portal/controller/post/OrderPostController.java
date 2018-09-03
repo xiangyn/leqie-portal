@@ -20,6 +20,12 @@ public class OrderPostController {
 	
 	@Autowired
 	private OrderService service;
+	
+	@RequestMapping("/app/order/fast.jo")
+	public Result<Void> save(HttpServletRequest request, @RequestParam("file")String file) {
+		String userId = WebUtil.getUserId(request);
+		return new Result<Void>(service.fastOrder(userId, file));
+	}
 
 	@RequestMapping("/app/order/save.jo")
 	public Result<Void> save(HttpServletRequest request, @ModelAttribute("model")OrderSave order) {

@@ -29,7 +29,7 @@
 							<div class="table-cell-wrapper">操作</div>
 						</th>
 					</tr>
-					<#if data?size==0>
+					<#if page.count==0>
 					<tr>
 						<td colspan="7">
 							<p class="empty-info text-center">暂无订单记录！</p>
@@ -39,11 +39,7 @@
 				</thead>
 			</table>
 		</div>
-		<#if data?size==0 && page?exists>
-			<#import "/common/page.ftl" as pagination />
-			<@pagination.pagination page=page />
-		</#if>
-		<#list data as model>
+		<#list page.data as model>
 			<div class="table order" data-no="${model.no}">
 			<table>
 				<colgroup>
@@ -116,5 +112,9 @@
 			</table>
 			</div>
 		</#list>
+		<#if !notDisplayPage?exists && page.count!=0>
+			<#import "/common/page.ftl" as pagination />
+			<@pagination.pagination page=page />
+		</#if>
 	</div>
 </div>

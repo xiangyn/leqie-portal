@@ -34,13 +34,12 @@
 	</#if>
 	<div class="row leqie-page clearfix">
 		<div class="page-info left">
-			<#if page.pages != 0><span class="page-info">共 ${page.pages!'0'} 页</span></#if>
-			<input type="hidden" id="prevPage" value="${_prePageNo}" />
-			<input type="hidden" id="nextPage" value="${_nextPageNo}" />
+			<span class="page-info"><#if page.pages != 0>第 ${page.pageNum} 页／共 ${page.pages!'1'} 页</#if></span>
+			<input type="hidden" class="current-page" value="${page.pageNum}" />
 		</div>
 		<div class="page-buttons right">
-			<a class="prev-btn <#if page.pageNum == 1>disabled</#if>" href="${_prevHref}">上一页</a>
-			<a class="next-btn <#if page.pageNum == page.pages>disabled</#if>" href="${_nextHref}">下一页</a>
+			<a class="prev-btn page-btn <#if page.pageNum == 1 || js>disabled</#if>" href="${_prevHref}">上一页</a>
+			<a class="next-btn page-btn <#if page.pageNum == page.pages || js>disabled</#if>" href="${_nextHref}">下一页</a>
 		</div>
 	</div>
 </#macro>

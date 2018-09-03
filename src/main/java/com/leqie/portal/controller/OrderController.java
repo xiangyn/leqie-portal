@@ -54,8 +54,8 @@ public class OrderController {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(null);
 		Page<Order2> page = service.findOrder(search);
-		mv.addObject("data", page.getData());
-		mv.addObject("page", null);
+		mv.addObject("page", page);
+		mv.addObject("notDisplayPage", true);
 		mv.setViewName(Template.ORDER_INDEX);
 		return mv;
 	}
@@ -67,7 +67,6 @@ public class OrderController {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(OrderStatus.UNPAY);
 		Page<Order2> page = service.findOrder(search);
-		mv.addObject("data", page.getData());
 		mv.addObject("page", page);
 		mv.setViewName(Template.ORDER_UNPAY);
 		return mv;
@@ -80,7 +79,6 @@ public class OrderController {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(OrderStatus.UNRECV);
 		Page<Order2> page = service.findOrder(search);
-		mv.addObject("data", page.getData());
 		mv.addObject("page", page);
 		mv.setViewName(Template.ORDER_UNRECV);
 		return mv;
@@ -93,7 +91,6 @@ public class OrderController {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(OrderStatus.FINISHED);
 		Page<Order2> page = service.findOrder(search);
-		mv.addObject("data", page.getData());
 		mv.addObject("page", page);
 		mv.setViewName(Template.ORDER_FINISHED);
 		return mv;
@@ -106,7 +103,6 @@ public class OrderController {
 		search.setPhone(WebUtil.getUserPhone(request));
 		search.setType(null);
 		Page<Order2> page = service.findOrder(search);
-		mv.addObject("data", page.getData());
 		mv.addObject("page", page);
 		mv.setViewName(Template.ORDER_ALL);
 		return mv;

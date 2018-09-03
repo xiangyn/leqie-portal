@@ -8,6 +8,7 @@
 	<title>乐切 - 官方网站</title>
 </head>
 <body>
+	<#import "/common/page.ftl" as pagination />
 	<#include "/common/top.ftl" />
 	<#assign navbarSelectedMenu='center' />
 	<#assign logoInfo='我的白条' />
@@ -83,6 +84,7 @@
 									</div>
 								</li>
 							</ul>
+							<@pagination.pagination page=page js=true />
 						</div>
 						<div class="buy-product-list" id="overdraft-pay-list" style="display: none;">
 							<ul class="product-list">
@@ -98,6 +100,7 @@
 									</div>
 								</li>
 							</ul>
+							<@pagination.pagination page=page js=true />
 						</div>
 						</#if>
 					</div>
@@ -137,10 +140,22 @@ $(function() {
 										<span class="column time">'+(new Date(each.createTime).format('yyyy-MM-dd HH:mm:ss'))+'</span>\
 									</li>');
 						}
+						$("#overdraft-bill-list .page-btn").removeClass("disabled");
+						if(page == 1) {
+							$("#overdraft-bill-list .prev-btn").addClass("disabled");
+						}
+						if(ret.data.pages == page) {
+							$("#overdraft-bill-list .next-btn").addClass("disabled");
+						}
+						$("#overdraft-bill-list .current-page").val(page);
+						$("#overdraft-bill-list .page-info span.page-info").text("第" + page + "页／共" + ret.data.pages + "页");
 					}else {
 						$("#overdraft-bill-list .product-item").remove();
 						$("#overdraft-bill-list .product-empty").remove();
 						$("#overdraft-bill-list .product-list").append(emptyInfo);
+						$("#overdraft-bill-list .page-btn").addClass("disabled");
+						$("#overdraft-bill-list .current-page").val("1");
+						$("#overdraft-bill-list .page-info span.page-info").text("");
 					}
 				}
 			}
@@ -165,19 +180,57 @@ $(function() {
 										<span class="column time">'+(new Date(each.createTime).format('yyyy-MM-dd HH:mm:ss'))+'</span>\
 									</li>');
 						}
+						$("#overdraft-pay-list .page-btn").removeClass("disabled");
+						if(page == 1) {
+							$("#overdraft-pay-list .prev-btn").addClass("disabled");
+						}
+						if(ret.data.pages == page) {
+							$("#overdraft-pay-list .next-btn").addClass("disabled");
+						}
+						$("#overdraft-pay-list .current-page").val(page);
+						$("#overdraft-pay-list .page-info span.page-info").text("第" + page + "页／共" + ret.data.pages + "页");
 					}else {
 						$("#overdraft-pay-list .product-item").remove();
 						$("#overdraft-pay-list .product-empty").remove();
 						$("#overdraft-pay-list .product-list").append(emptyInfo);
+						$("#overdraft-pay-list .page-btn").addClass("disabled");
+						$("#overdraft-pay-list .current-page").val("1");
+						$("#overdraft-pay-list .page-info span.page-info").text("");
 					}
 				}
 			}
 		});
 	}
 	
-	loadBillList();
+	$("#overdraft-bill-list .prev-btn").on("click", function() {
+		if($(this).hasClass("disabled")) {
+			return;
+		}
+		loadBillList($("#overdraft-bill-list .current-page").val() * 1 - 1);
+	});
+	$("#overdraft-bill-list .next-btn").on("click", function() {
+		if($(this).hasClass("disabled")) {
+			return;
+		}
+		loadBillList($("#overdraft-bill-list .current-page").val() * 1 + 1);
+	});
 	
-	loadPayList();
+	$("#overdraft-pay-list .prev-btn").on("click", function() {
+		if($(this).hasClass("disabled")) {
+			return;
+		}
+		loadPayList($("#overdraft-pay-list .current-page").val() * 1 - 1);
+	});
+	$("#overdraft-pay-list .next-btn").on("click", function() {
+		if($(this).hasClass("disabled")) {
+			return;
+		}
+		loadPayList($("#overdraft-pay-list .current-page").val() * 1 + 1);
+	});
+	
+	loadBillList(1);
+	
+	loadPayList(1);
 	
 });
 </script>

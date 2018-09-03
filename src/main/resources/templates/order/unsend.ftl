@@ -3,6 +3,7 @@
 <head>
 	<#include "/common/head.ftl" />
 	<link href="${ctx}/static/css/font-awesome.min.css" rel="stylesheet">
+	<link href="${ctx}/static/css/iziToast.min.css" rel="stylesheet">
 	<link href="${ctx}/static/css/app.css" rel="stylesheet">
 	<title>乐切 - 官方网站</title>
 </head>
@@ -34,6 +35,7 @@
 	</div>
 	<#include "/common/footer.ftl" />
 <#include "/common/foot.ftl" />
+<script type="text/javascript" src="${ctx}/static/js/iziToast.min.js"></script>
 <script type="text/javascript" src="${ctx}/static/js/utils.js"></script>
 <#include "/order/order-js.ftl" />
 </body>
